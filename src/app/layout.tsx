@@ -17,12 +17,29 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = getSiteUrl();
+
 export const metadata: Metadata = {
-  metadataBase: getSiteUrl(),
+  metadataBase: siteUrl,
   title: `${profile.name} | ${profile.role}`,
   description:
     "Vishant Kumar is a software engineering student in Fiji. Explore his projects, technical skills, and education.",
   alternates: canonicalPath("/"),
+  ...(siteUrl
+    ? {
+        openGraph: {
+          type: "website" as const,
+          title: `${profile.name} | ${profile.role}`,
+          description:
+            "Explore Vishant Kumar's software projects, technical skills, and education.",
+          images: [new URL("/social-image", siteUrl).toString()],
+        },
+        twitter: {
+          card: "summary_large_image" as const,
+          images: [new URL("/social-image", siteUrl).toString()],
+        },
+      }
+    : {}),
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

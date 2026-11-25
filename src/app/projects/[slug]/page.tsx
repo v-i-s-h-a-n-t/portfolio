@@ -9,7 +9,7 @@ import {
   ProjectImage,
 } from "@/components/projects/project-media";
 import { profile } from "@/data/profile";
-import { canonicalPath } from "@/lib/site-url";
+import { canonicalPath, getSiteUrl } from "@/lib/site-url";
 import {
   getProjectContentBySlug,
   getPublishedProjectContent,
@@ -38,26 +38,26 @@ export async function generateMetadata({
 
   const title = `${project.metadata.title} | ${profile.name}`;
   const description = project.metadata.description;
-  const images = project.metadata.image
-    ? [{ url: project.metadata.image.src, alt: project.metadata.image.alt }]
+  const siteUrl = getSiteUrl();
+  const images = siteUrl
+    ? [{ url: new URL("/social-image", siteUrl).toString() }]
     : undefined;
 
   return {
     title,
     description,
     alternates: canonicalPath(`/projects/${slug}`),
-    openGraph: {
-      title,
-      description,
-      type: "article",
-      ...(images ? { images } : {}),
-    },
-    twitter: {
-      card: images ? "summary_large_image" : "summary",
-      title,
-      description,
-      ...(images ? { images: images.map((image) => image.url) } : {}),
-    },
+    ...(images
+      ? {
+          openGraph: { title, description, type: "article" as const, images },
+          twitter: {
+            card: "summary_large_image" as const,
+            title,
+            description,
+            images: images.map((image) => image.url),
+          },
+        }
+      : {}),
   };
 }
 

@@ -1,4 +1,5 @@
 import type { ProjectMetadata } from "@/types/project";
+import { validateProjectMetadata } from "@/lib/project-validation";
 
 export const projects: ProjectMetadata[] = [
   {
@@ -56,3 +57,5 @@ export const projects: ProjectMetadata[] = [
     publicationStatus: "draft",
   },
 ];
+
+validateProjectMetadata(projects);

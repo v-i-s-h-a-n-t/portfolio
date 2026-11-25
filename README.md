@@ -22,3 +22,16 @@ The source for Vishant Kumar's personal software engineering portfolio. The `vk.
 Routes and metadata live in `src/app`; reusable layout, section, project, and UI components live in `src/components`. Typed project MDX lives in `src/content/projects`, with publication filtering and content helpers in `src/content` and `src/lib`. Static profile, education, skills, achievements, and changelog records live in `src/data`. Approved images and the public résumé live in `public`; content tests live in `tests`.
 
 Server Components render route content by default. Client Components handle navigation, search, filtering, themes, and motion. See [the architecture guide](docs/ARCHITECTURE.md) for directory responsibilities and boundaries.
+
+## Local development
+
+Use Node.js 24 and pnpm 12.23.0 (the version pinned in `package.json`). From the repository root:
+
+```bash
+pnpm install --frozen-lockfile
+pnpm dev
+```
+
+Open `http://localhost:3000`. For a production run, use `pnpm build` followed by `pnpm start`.
+
+`NEXT_PUBLIC_SITE_URL` is optional. Set it to the verified HTTPS production origin when deploying so canonical URLs, sitemap entries, and social metadata use that domain. Do not set it to a placeholder or localhost URL.

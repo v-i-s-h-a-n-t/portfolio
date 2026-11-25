@@ -1,3 +1,7 @@
+import { Award } from "lucide-react";
+import { EducationTimeline } from "@/components/shared/education-timeline";
+import { achievements } from "@/data/achievements";
+import { education } from "@/data/journey";
 import { profile } from "@/data/profile";
 
 export default function AboutPage() {
@@ -23,6 +27,45 @@ export default function AboutPage() {
           engineering.
         </p>
       </section>
+
+      <div className="grid gap-5 md:grid-cols-2">
+        <section
+          aria-labelledby="about-education-heading"
+          className="space-y-6 rounded-lg border border-border bg-card p-5 sm:p-6"
+        >
+          <h2 className="text-xl font-semibold" id="about-education-heading">
+            Education
+          </h2>
+          <EducationTimeline entries={education} />
+        </section>
+
+        <section
+          aria-labelledby="about-achievements-heading"
+          className="space-y-6 rounded-lg border border-border bg-card p-5 sm:p-6"
+        >
+          <h2 className="text-xl font-semibold" id="about-achievements-heading">
+            Academic achievements
+          </h2>
+          <ul className="space-y-4">
+            {achievements.map((achievement) => (
+              <li className="flex items-start gap-3" key={achievement.title}>
+                <Award
+                  aria-hidden="true"
+                  className="mt-0.5 size-5 shrink-0 text-primary"
+                />
+                <div className="space-y-1">
+                  <p className="leading-snug font-medium">
+                    {achievement.title}
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    {achievement.year}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
     </section>
   );
 }

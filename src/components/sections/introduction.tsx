@@ -1,6 +1,8 @@
-import { MapPin } from "lucide-react";
+import { ArrowUpRight, MapPin } from "lucide-react";
+import Link from "next/link";
 import { ProfilePortrait } from "@/components/shared/profile-portrait";
 import { SocialLinks } from "@/components/shared/social-links";
+import { buttonVariants } from "@/components/ui/button";
 import { profile } from "@/data/profile";
 
 export function Introduction() {
@@ -34,7 +36,16 @@ export function Introduction() {
             <MapPin className="size-4 shrink-0" aria-hidden="true" />
             {profile.location}
           </p>
-          <SocialLinks links={profile.socials} />
+          <div className="flex flex-wrap items-center gap-3">
+            <SocialLinks links={profile.socials} />
+            <Link
+              className={buttonVariants({ variant: "outline", size: "lg" })}
+              href="/resume"
+            >
+              Résumé
+              <ArrowUpRight aria-hidden="true" />
+            </Link>
+          </div>
         </div>
         <ProfilePortrait />
       </div>

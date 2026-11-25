@@ -74,6 +74,7 @@ export function CommandPalette({ index }: CommandPaletteProps) {
       items: results.filter((item) => item.group === group),
     }))
     .filter(({ items }) => items.length > 0);
+  const hasQuery = query.trim().length > 0;
 
   function handleOpenChange(nextOpen: boolean) {
     setOpen(nextOpen);
@@ -177,6 +178,14 @@ export function CommandPalette({ index }: CommandPaletteProps) {
             />
           </div>
           <div className="min-h-24 overflow-y-auto pt-4">
+            {hasQuery ? (
+              <p
+                aria-live="polite"
+                className="mb-3 px-1 text-sm text-muted-foreground"
+              >
+                {results.length} {results.length === 1 ? "result" : "results"}
+              </p>
+            ) : null}
             <div
               aria-label="Search results"
               id="command-palette-results"
@@ -230,6 +239,17 @@ export function CommandPalette({ index }: CommandPaletteProps) {
                 </div>
               ))}
             </div>
+            {results.length === 0 ? (
+              <div
+                className="rounded-lg border border-border bg-card px-4 py-6 text-center"
+                role="status"
+              >
+                <p className="font-medium">No results found</p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Try a different search or browse the project directory.
+                </p>
+              </div>
+            ) : null}
           </div>
         </Dialog.Popup>
       </Dialog.Portal>

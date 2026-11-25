@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ArrowUpRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import { MDXRenderer } from "@/components/content/mdx-renderer";
 import { profile } from "@/data/profile";
@@ -41,6 +42,14 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   if (!project) notFound();
 
   const Content = project.default;
+  const projectLinks = [
+    project.metadata.repositoryUrl
+      ? { href: project.metadata.repositoryUrl, label: "Source repository" }
+      : null,
+    project.metadata.demoUrl
+      ? { href: project.metadata.demoUrl, label: "Live demo" }
+      : null,
+  ].filter((link) => link !== null);
 
   return (
     <article className="space-y-8">
@@ -52,16 +61,35 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
         <p className="max-w-prose text-lg text-muted-foreground">
           {project.metadata.description}
         </p>
-        <ul
-          aria-label="Technologies"
-          className="flex flex-wrap gap-x-4 gap-y-2"
-        >
-          {project.metadata.technologies.map((technology) => (
-            <li className="text-sm font-medium text-primary" key={technology}>
-              {technology}
-            </li>
-          ))}
-        </ul>
+        {project.metadata.technologies.length > 0 ? (
+          <ul
+            aria-label="Technologies"
+            className="flex flex-wrap gap-x-4 gap-y-2"
+          >
+            {project.metadata.technologies.map((technology) => (
+              <li className="text-sm font-medium text-primary" key={technology}>
+                {technology}
+              </li>
+            ))}
+          </ul>
+        ) : null}
+        {projectLinks.length > 0 ? (
+          <ul aria-label="Project links" className="flex flex-wrap gap-4">
+            {projectLinks.map((link) => (
+              <li key={link.label}>
+                <a
+                  className="inline-flex items-center gap-1.5 text-sm font-medium"
+                  href={link.href}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  {link.label}
+                  <ArrowUpRight aria-hidden="true" className="size-4" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : null}
       </header>
       <MDXRenderer>
         <Content />

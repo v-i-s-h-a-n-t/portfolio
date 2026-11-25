@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Layers3 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import type { ProjectMetadata } from "@/types/project";
 
@@ -25,15 +26,26 @@ export function ProjectCard({
         </div>
       ) : null}
       <CardContent className="space-y-4 p-5">
-        <div className="space-y-2">
-          <h3 className="font-heading text-lg font-semibold tracking-tight">
-            {project.title}
-          </h3>
-          {project.description ? (
-            <p className="text-sm leading-relaxed text-muted-foreground">
-              {project.description}
-            </p>
+        <div
+          className={
+            variant === "compact" ? "flex items-start gap-3" : "space-y-2"
+          }
+        >
+          {variant === "compact" ? (
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-md bg-secondary text-primary">
+              <Layers3 aria-hidden="true" className="size-5" />
+            </span>
           ) : null}
+          <div className="min-w-0 space-y-2">
+            <h3 className="font-heading text-lg font-semibold tracking-tight">
+              {project.title}
+            </h3>
+            {project.description ? (
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                {project.description}
+              </p>
+            ) : null}
+          </div>
         </div>
         {project.technologies.length > 0 ? (
           <ul

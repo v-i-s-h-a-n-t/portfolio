@@ -1,4 +1,5 @@
 import { ThemeToggle } from "@/components/layout/theme-toggle";
+import { CommandPalette } from "@/components/shared/command-palette";
 
 type NavigationUtilitiesProps = {
   githubUrl?: string;
@@ -7,6 +8,7 @@ type NavigationUtilitiesProps = {
 export function NavigationUtilities({ githubUrl }: NavigationUtilitiesProps) {
   return (
     <div className="flex items-center gap-2">
+      <CommandPalette />
       {githubUrl ? (
         <a
           aria-label="GitHub profile"

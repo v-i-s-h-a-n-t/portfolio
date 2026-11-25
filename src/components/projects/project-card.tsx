@@ -50,7 +50,7 @@ export function ProjectCard({
         {project.technologies.length > 0 ? (
           <ul
             aria-label="Technologies used"
-            className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-muted-foreground"
+            className="flex flex-wrap gap-x-3 gap-y-1 text-sm font-medium text-primary"
           >
             {project.technologies.map((technology) => (
               <li key={technology}>{technology}</li>

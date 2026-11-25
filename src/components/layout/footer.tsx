@@ -1,8 +1,14 @@
 import { Container } from "@/components/layout/container";
 import { profile } from "@/data/profile";
 
-export function Footer() {
-  const currentYear = new Date().getFullYear();
+async function getCurrentYear() {
+  "use cache";
+
+  return new Date().getFullYear();
+}
+
+export async function Footer() {
+  const currentYear = await getCurrentYear();
 
   return (
     <footer className="border-t border-border">

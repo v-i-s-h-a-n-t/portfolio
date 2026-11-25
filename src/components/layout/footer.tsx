@@ -1,5 +1,6 @@
 import { Container } from "@/components/layout/container";
 import { profile } from "@/data/profile";
+import Link from "next/link";
 
 async function getCurrentYear() {
   "use cache";
@@ -16,7 +17,15 @@ export async function Footer() {
         <p>
           © {currentYear} {profile.name}
         </p>
-        <p>Built with Next.js</p>
+        <div className="flex items-center gap-4">
+          <Link
+            className="transition-colors hover:text-foreground"
+            href="/changelog"
+          >
+            Changelog
+          </Link>
+          <p>Built with Next.js</p>
+        </div>
       </Container>
     </footer>
   );

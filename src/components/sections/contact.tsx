@@ -1,3 +1,5 @@
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { SocialLinks } from "@/components/shared/social-links";
 import { profile } from "@/data/profile";
 
@@ -15,7 +17,16 @@ export function Contact() {
           Always interested in learning, collaborating and exploring new
           opportunities in software engineering.
         </p>
-        <SocialLinks links={profile.socials} />
+        <div className="flex flex-wrap items-center gap-3">
+          <SocialLinks links={profile.socials} />
+          <Link
+            className="inline-flex items-center gap-1 text-sm font-medium text-primary"
+            href="/contact"
+          >
+            Contact details
+            <ArrowRight aria-hidden="true" className="size-4" />
+          </Link>
+        </div>
       </div>
     </section>
   );

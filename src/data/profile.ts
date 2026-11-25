@@ -1,6 +1,7 @@
 export type ProfileSocialLinks = {
   github?: string;
   linkedin?: string;
+  instagram?: string;
   email?: string;
 };
 
@@ -23,5 +24,10 @@ export const profile: PersonalProfile = {
   university: "The University of the South Pacific",
   degree: "Bachelor of Software Engineering",
   expectedGraduation: 2028,
-  socials: {},
+  socials: {
+    github: "https://github.com/v-i-s-h-a-n-t",
+    linkedin: "https://www.linkedin.com/in/vishant-kumar-583b11330",
+    instagram: "https://www.instagram.com/v1shantk/",
+    email: "vishantk103@gmail.com",
+  },
 };

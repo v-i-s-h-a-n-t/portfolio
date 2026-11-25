@@ -33,6 +33,30 @@ function LinkedInIcon() {
   );
 }
 
+function InstagramIcon() {
+  return (
+    <svg aria-hidden="true" className="size-5" viewBox="0 0 24 24" fill="none">
+      <rect
+        x="3.75"
+        y="3.75"
+        width="16.5"
+        height="16.5"
+        rx="4.5"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+      <circle
+        cx="12"
+        cy="12"
+        r="3.75"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+      <circle cx="17.7" cy="6.5" r="1" fill="currentColor" />
+    </svg>
+  );
+}
+
 export function SocialLinks({ links }: { links: ProfileSocialLinks }) {
   const items: SocialLinkItem[] = [];
 
@@ -51,6 +75,15 @@ export function SocialLinks({ links }: { links: ProfileSocialLinks }) {
       label: "LinkedIn profile",
       external: true,
       icon: <LinkedInIcon />,
+    });
+  }
+
+  if (links.instagram) {
+    items.push({
+      href: links.instagram,
+      label: "Instagram profile",
+      external: true,
+      icon: <InstagramIcon />,
     });
   }
 

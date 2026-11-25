@@ -10,6 +10,19 @@ export default function AboutPage() {
           {profile.role} <span aria-hidden="true">·</span> {profile.location}
         </p>
       </header>
+
+      <section aria-labelledby="about-profile-heading" className="space-y-3">
+        <h2 className="text-xl font-semibold" id="about-profile-heading">
+          Profile
+        </h2>
+        <p className="max-w-prose leading-relaxed text-muted-foreground">
+          I&apos;m a {profile.role.toLowerCase()} based in {profile.location},
+          studying {profile.degree} at {profile.university}. I expect to
+          graduate in {profile.expectedGraduation}. I build software, explore
+          emerging technologies and enjoy solving complex problems through
+          engineering.
+        </p>
+      </section>
     </section>
   );
 }

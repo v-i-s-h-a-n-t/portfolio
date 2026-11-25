@@ -1,14 +1,21 @@
 export const metadata = {
   title: "Distributed Worker Cluster",
   slug: "distributed-worker-cluster",
-  description: null,
-  category: null,
-  technologies: [],
+  description:
+    "A Java RMI cluster that distributes jobs across worker nodes under an elected coordinator.",
+  category: "Distributed systems",
+  technologies: ["Java 17", "Java RMI", "Maven"],
   featured: false,
   publicationStatus: "draft",
+  repositoryUrl:
+    "https://github.com/v-i-s-h-a-n-t/distributed-job-processing-system",
   image: {
     src: "/projects/distributed-worker-cluster.svg",
     alt: "Conceptual coordinator connected to three worker nodes; not a verified deployment diagram.",
   },
   illustrationType: "architecture",
 };
+
+## Overview
+
+This Java RMI project runs jobs across registered worker nodes. Workers elect a coordinator to manage distributed job execution.

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Footer } from "@/components/layout/footer";
-import { MotionProvider } from "@/components/providers/motion-provider";
 import { SiteLayout } from "@/components/layout/site-layout";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import "./globals.css";
@@ -29,12 +28,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col">
-        <MotionProvider>
-          <ThemeProvider>
-            <SiteLayout>{children}</SiteLayout>
-            <Footer />
-          </ThemeProvider>
-        </MotionProvider>
+        <ThemeProvider>
+          <SiteLayout>{children}</SiteLayout>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

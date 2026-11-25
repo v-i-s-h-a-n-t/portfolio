@@ -1,14 +1,19 @@
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { CommandPalette } from "@/components/shared/command-palette";
+import type { SearchIndexItem } from "@/lib/search-index";
 
 type NavigationUtilitiesProps = {
   githubUrl?: string;
+  searchIndex: SearchIndexItem[];
 };
 
-export function NavigationUtilities({ githubUrl }: NavigationUtilitiesProps) {
+export function NavigationUtilities({
+  githubUrl,
+  searchIndex,
+}: NavigationUtilitiesProps) {
   return (
     <div className="flex items-center gap-2">
-      <CommandPalette />
+      <CommandPalette index={searchIndex} />
       {githubUrl ? (
         <a
           aria-label="GitHub profile"

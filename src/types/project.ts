@@ -5,6 +5,11 @@ export type ProjectImage = {
   alt: string;
 };
 
+export type ProjectTableOfContentsItem = {
+  title: string;
+  level: 2 | 3;
+};
+
 export type ProjectIllustrationType =
   "architecture" | "workflow" | "data-visualization" | "interface";
 
@@ -18,6 +23,7 @@ export type ProjectMetadata = {
   publicationStatus: ProjectPublicationStatus;
   image?: ProjectImage;
   illustrationType?: ProjectIllustrationType;
+  tableOfContents?: ProjectTableOfContentsItem[];
   repositoryUrl?: string;
   demoUrl?: string;
 };

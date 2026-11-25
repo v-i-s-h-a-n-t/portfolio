@@ -38,6 +38,29 @@ test("project metadata requires a summary and category before publication", () =
   );
 });
 
+test("project table of contents accepts unique level-two and level-three headings", () => {
+  const metadata = validateProjectContentMetadata({
+    ...projectDraft,
+    tableOfContents: [
+      { title: "Overview", level: 2 },
+      { title: "Implementation", level: 3 },
+    ],
+  });
+
+  assert.equal(metadata.tableOfContents.length, 2);
+  assert.throws(
+    () =>
+      validateProjectContentMetadata({
+        ...projectDraft,
+        tableOfContents: [
+          { title: "Setup & usage", level: 2 },
+          { title: "Setup usage", level: 2 },
+        ],
+      }),
+    /headings must be unique/,
+  );
+});
+
 test("journal metadata validates required published fields and ISO dates", () => {
   const article = {
     title: "Test Article",

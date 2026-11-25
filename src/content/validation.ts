@@ -10,6 +10,16 @@ const projectIllustrationTypes = new Set([
   "interface",
 ]);
 
+function headingSlug(title: string): string {
+  return title
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
@@ -99,6 +109,34 @@ export function validateProjectContentMetadata(
     !projectIllustrationTypes.has(String(value.illustrationType))
   ) {
     throw new Error(`Project "${slug}" has an invalid illustration type.`);
+  }
+  if (value.tableOfContents !== undefined) {
+    if (!Array.isArray(value.tableOfContents)) {
+      throw new Error(`Project "${slug}" table of contents must be a list.`);
+    }
+
+    const headingSlugs = new Set<string>();
+    for (const heading of value.tableOfContents) {
+      if (!isRecord(heading)) {
+        throw new Error(
+          `Project "${slug}" table of contents has an invalid item.`,
+        );
+      }
+      requireText(heading.title, "table of contents title", slug);
+      if (heading.level !== 2 && heading.level !== 3) {
+        throw new Error(
+          `Project "${slug}" table of contents level must be 2 or 3.`,
+        );
+      }
+
+      const headingId = headingSlug(String(heading.title));
+      if (!headingId || headingSlugs.has(headingId)) {
+        throw new Error(
+          `Project "${slug}" table of contents headings must be unique.`,
+        );
+      }
+      headingSlugs.add(headingId);
+    }
   }
   validateUrls(value, slug);
 

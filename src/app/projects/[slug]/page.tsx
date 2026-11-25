@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ArrowUpRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import { MDXRenderer } from "@/components/content/mdx-renderer";
+import { ProjectTableOfContents } from "@/components/content/project-table-of-contents";
 import {
   ProjectIllustration,
   ProjectImage,
@@ -107,6 +108,9 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             src={project.metadata.image.src}
           />
         )
+      ) : null}
+      {project.metadata.tableOfContents ? (
+        <ProjectTableOfContents items={project.metadata.tableOfContents} />
       ) : null}
       <MDXRenderer>
         <Content />

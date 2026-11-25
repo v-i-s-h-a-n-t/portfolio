@@ -120,6 +120,21 @@ export function validateProjectMetadata(
       );
     }
 
+    if (
+      project.tableOfContents !== undefined &&
+      (!Array.isArray(project.tableOfContents) ||
+        project.tableOfContents.some(
+          (heading) =>
+            typeof heading.title !== "string" ||
+            heading.title.trim().length === 0 ||
+            (heading.level !== 2 && heading.level !== 3),
+        ))
+    ) {
+      throw new Error(
+        `Project "${projectTitle}" has an invalid table of contents.`,
+      );
+    }
+
     validateOptionalUrl(project.repositoryUrl, "repository", projectTitle);
     validateOptionalUrl(project.demoUrl, "demo", projectTitle);
   }

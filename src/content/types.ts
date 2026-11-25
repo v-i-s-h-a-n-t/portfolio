@@ -1,6 +1,10 @@
 import type { ComponentType } from "react";
 import type { MDXProps } from "mdx/types";
-import type { ProjectIllustrationType, ProjectImage } from "@/types/project";
+import type {
+  ProjectIllustrationType,
+  ProjectImage,
+  ProjectTableOfContentsItem,
+} from "@/types/project";
 
 type ProjectContentBase = {
   title: string;
@@ -11,6 +15,7 @@ type ProjectContentBase = {
   featured: boolean;
   image?: ProjectImage;
   illustrationType?: ProjectIllustrationType;
+  tableOfContents?: ProjectTableOfContentsItem[];
   repositoryUrl?: string;
   demoUrl?: string;
 };

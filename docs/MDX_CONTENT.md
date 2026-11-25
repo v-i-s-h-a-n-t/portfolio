@@ -12,7 +12,8 @@ YAML frontmatter is not enabled.
 2. Export the project metadata fields: `title`, `slug`, `description`,
    `category`, `technologies`, `featured`, and `publicationStatus`. The optional
    illustration fields are `image`, `illustrationType`, `repositoryUrl`, and
-   `demoUrl`.
+   `demoUrl`. Optional `tableOfContents` entries support level-two and level-three
+   headings in the case study body.
 3. Keep incomplete work in `draft` status. A published project needs an approved
    description and category. Only add confirmed technologies, links, and project
    details.
@@ -50,6 +51,8 @@ Start body headings at level two because the page title is already the level-one
 heading. Store referenced images in `public/images` or `public/projects`, and
 provide meaningful alternative text. MDX can use the shared `ProjectImage` and
 `ProjectIllustration` components for responsive media.
+Project case studies can provide `tableOfContents` metadata with each heading's
+title and level; the shared MDX heading components generate matching anchor IDs.
 
 Next.js does not parse YAML frontmatter by default. Keep metadata as a named
 JavaScript export, and register each content module in its collection manifest

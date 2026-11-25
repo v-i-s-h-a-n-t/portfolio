@@ -33,3 +33,26 @@ The bootstrap service creates the RMI registry and tracks active workers. New wo
 ## My contributions
 
 My commits and source identify work on the RMI bootstrap service and worker interfaces: registry startup, worker registration and deregistration, peer selection, duplicate-ID checks, and shutdown cleanup.
+
+## Technical diagram
+
+<MermaidDiagram
+  title="Worker-cluster job flow"
+  description="A client discovers registered workers through the bootstrap service. Workers elect a coordinator through flooding and convergecast. The coordinator partitions a job, workers compute parts, and an aggregator returns validated results to the client."
+  code={`flowchart TD
+    Client[Client GUI] -->|discover workers| Bootstrap[Bootstrap RMI service]
+    Bootstrap --> WorkerA[Worker node A]
+    Bootstrap --> WorkerB[Worker node B]
+    WorkerA <--> WorkerB
+    WorkerA -->|flooding and convergecast| Election[Coordinator election]
+    WorkerB -->|flooding and convergecast| Election
+    Election --> Coordinator[Elected coordinator]
+    Client --> WorkerA
+    WorkerA --> Coordinator
+    Coordinator --> Partitioner[Work partitioner]
+    Partitioner --> WorkerA
+    Partitioner --> WorkerB
+    WorkerA --> Aggregator[Result aggregator]
+    WorkerB --> Aggregator
+    Aggregator --> Client`}
+/>

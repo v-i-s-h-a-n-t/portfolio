@@ -20,6 +20,8 @@ export function ProfilePortrait({ image }: ProfilePortraitProps) {
           alt={image.alt}
           className="object-cover"
           fill
+          fetchPriority="high"
+          loading="eager"
           sizes="(min-width: 768px) 25vw, 180px"
           src={image.src}
         />

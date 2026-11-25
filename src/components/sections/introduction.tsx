@@ -1,32 +1,47 @@
-import { MapPin } from "lucide-react";
+import { MapPin, UserRound } from "lucide-react";
 import { profile } from "@/data/profile";
 
 export function Introduction() {
   return (
-    <section aria-labelledby="introduction-heading" className="space-y-5">
-      <p className="flex items-center gap-2.5 text-sm font-medium text-primary sm:text-base">
-        <span
-          className="size-2.5 shrink-0 rounded-full bg-primary"
-          aria-hidden="true"
-        />
-        {profile.role}
-      </p>
-      <div className="space-y-3">
-        <h1
-          className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl"
-          id="introduction-heading"
+    <section
+      aria-labelledby="introduction-heading"
+      className="rounded-lg border border-border bg-card p-5 sm:p-7 md:p-8"
+    >
+      <div className="grid gap-8 md:grid-cols-[minmax(0,3fr)_minmax(0,1fr)] md:items-center md:gap-10">
+        <div className="min-w-0 space-y-5">
+          <p className="flex items-center gap-2.5 text-sm font-medium text-primary sm:text-base">
+            <span
+              className="size-2.5 shrink-0 rounded-full bg-primary"
+              aria-hidden="true"
+            />
+            {profile.role}
+          </p>
+          <div className="space-y-3">
+            <h1
+              className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl"
+              id="introduction-heading"
+            >
+              Hi, I&apos;m {profile.name}.
+            </h1>
+            <p className="max-w-prose text-lg leading-relaxed text-muted-foreground">
+              I build software, explore emerging technologies and enjoy solving
+              complex problems through engineering.
+            </p>
+          </div>
+          <p className="inline-flex items-center gap-2 text-base text-muted-foreground">
+            <MapPin className="size-4 shrink-0" aria-hidden="true" />
+            {profile.location}
+          </p>
+        </div>
+        <div
+          aria-label="Portrait placeholder"
+          className="mx-auto grid aspect-[3/4] w-full max-w-[180px] place-content-center gap-2 rounded-lg border border-border bg-surface-secondary text-center text-sm text-muted-foreground md:max-w-none"
+          role="img"
         >
-          Hi, I&apos;m {profile.name}.
-        </h1>
-        <p className="max-w-prose text-lg leading-relaxed text-muted-foreground">
-          I build software, explore emerging technologies and enjoy solving
-          complex problems through engineering.
-        </p>
+          <UserRound className="mx-auto size-8" aria-hidden="true" />
+          <span>Your photo</span>
+        </div>
       </div>
-      <p className="inline-flex items-center gap-2 text-base text-muted-foreground">
-        <MapPin className="size-4 shrink-0" aria-hidden="true" />
-        {profile.location}
-      </p>
     </section>
   );
 }

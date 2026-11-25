@@ -1,5 +1,6 @@
 import { Award } from "lucide-react";
 import { EducationTimeline } from "@/components/shared/education-timeline";
+import { ProfilePortrait } from "@/components/shared/profile-portrait";
 import { achievements } from "@/data/achievements";
 import { education } from "@/data/journey";
 import { profile } from "@/data/profile";
@@ -66,6 +67,23 @@ export default function AboutPage() {
           </ul>
         </section>
       </div>
+
+      <section
+        aria-labelledby="about-photography-heading"
+        className="space-y-4"
+      >
+        <h2 className="text-xl font-semibold" id="about-photography-heading">
+          Portrait
+        </h2>
+        <figure className="w-full max-w-[180px]">
+          <ProfilePortrait
+            image={{
+              src: "/images/vishant-kumar.jpg",
+              alt: "Portrait of Vishant Kumar",
+            }}
+          />
+        </figure>
+      </section>
     </section>
   );
 }

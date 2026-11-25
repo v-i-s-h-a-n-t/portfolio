@@ -278,6 +278,7 @@
   }
 
   .mdx-content .mdx-code-block pre {
+    max-width: 100%;
     overflow-x: auto;
     margin: 0;
     border: 0;
@@ -288,6 +289,7 @@
     font-size: 0.8125rem;
     line-height: 1.65;
     tab-size: 2;
+    overscroll-behavior-inline: contain;
     -webkit-overflow-scrolling: touch;
   }
 
@@ -333,6 +335,8 @@
     place-items: center;
     overflow-x: auto;
     padding: 1rem;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
   }
 
   .mdx-content .mdx-diagram__canvas svg {
@@ -353,6 +357,27 @@
     cursor: pointer;
     color: var(--primary);
     font-size: 0.875rem;
+  }
+
+  @media (max-width: 40rem) {
+    .mdx-content .mdx-code-block__header {
+      padding-inline: 0.75rem;
+    }
+
+    .mdx-content .mdx-code-block pre {
+      padding: 0.75rem;
+      font-size: 0.75rem;
+    }
+
+    .mdx-content .mdx-diagram__canvas {
+      justify-items: start;
+      padding: 0.75rem;
+    }
+
+    .mdx-content .mdx-diagram__canvas svg {
+      width: max(100%, 34rem);
+      max-width: none;
+    }
   }
 
   .mdx-content pre:not(.shiki) {

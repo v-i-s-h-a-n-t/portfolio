@@ -10,6 +10,7 @@ import {
 } from "@/components/projects/project-media";
 import { profile } from "@/data/profile";
 import { canonicalPath, getSiteUrl } from "@/lib/site-url";
+import { serializeJsonLd } from "@/lib/json-ld";
 import {
   getProjectContentBySlug,
   getPublishedProjectContent,
@@ -64,6 +65,7 @@ export async function generateMetadata({
 export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   const { slug } = await params;
   const project = getProjectContentBySlug(slug);
+  const siteUrl = getSiteUrl();
 
   if (!project) notFound();
 
@@ -79,6 +81,26 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
 
   return (
     <article className="space-y-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeJsonLd({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: project.metadata.title,
+            description: project.metadata.description,
+            author: { "@type": "Person", name: profile.name },
+            ...(siteUrl
+              ? {
+                  mainEntityOfPage: new URL(
+                    `/projects/${slug}`,
+                    siteUrl,
+                  ).toString(),
+                }
+              : {}),
+          }),
+        }}
+      />
       <header className="space-y-4 border-b border-border pb-6">
         <p className="text-sm font-medium text-primary">
           {project.metadata.category}

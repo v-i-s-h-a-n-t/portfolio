@@ -5,6 +5,7 @@ import { SiteLayout } from "@/components/layout/site-layout";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { profile } from "@/data/profile";
 import { canonicalPath, getSiteUrl } from "@/lib/site-url";
+import { serializeJsonLd } from "@/lib/json-ld";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -50,6 +51,19 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: `${profile.name} | ${profile.role}`,
+              description:
+                "Software engineering projects, skills, and education of Vishant Kumar.",
+              ...(siteUrl ? { url: siteUrl.toString() } : {}),
+            }),
+          }}
+        />
         <ThemeProvider>
           <SiteLayout>{children}</SiteLayout>
           <Footer />

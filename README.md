@@ -41,3 +41,20 @@ Open `http://localhost:3000`. For a production run, use `pnpm build` followed by
 Project case studies are MDX files in `src/content/projects`. Create a file with a unique lowercase, hyphenated slug, export its typed `metadata`, and register the module in `src/content/projects/index.ts`. Keep incomplete entries as `draft`; only `published` entries appear in the project directory, search, and detail routes. Published entries require a confirmed description and category. Add only verified technologies, media, links, and results. See [the MDX authoring guide](docs/MDX_CONTENT.md) for the complete schema and supported components.
 
 The Engineering Journal and its navigation were removed from this repository. There is currently no journal article collection or publishing workflow to document. If a journal is added later, its authoring and publication rules should be documented alongside that implementation.
+
+## Validation and CI
+
+Run the repository checks locally before opening a pull request:
+
+```bash
+pnpm format:check
+pnpm lint
+pnpm exec next typegen
+pnpm typecheck
+pnpm test:content
+pnpm build
+```
+
+`next typegen` creates the route-aware types needed by `LayoutProps` on a fresh checkout. The content tests validate project metadata, slugs, and published-only queries. No Playwright suite is configured.
+
+[GitHub Actions CI](.github/workflows/ci.yml) runs these checks after a frozen-lockfile install on pushes to `main`, pull requests, and manual dispatch. It does not deploy the site; no CD workflow or live deployment URL is configured in this repository.

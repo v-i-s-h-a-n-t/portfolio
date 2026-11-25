@@ -44,6 +44,9 @@ jobs:
       - name: Lint
         run: pnpm lint
 
+      - name: Generate route types
+        run: pnpm exec next typegen
+
       - name: Check types
         run: pnpm typecheck
 

@@ -29,3 +29,7 @@ This Java RMI project runs jobs across registered worker nodes. Workers elect a 
 ## Architecture
 
 The bootstrap service creates the RMI registry and tracks active workers. New workers register with unique IDs and connect to a random active peer. Workers elect a coordinator through flooding and convergecast; a client discovers workers through the bootstrap service and submits jobs to the coordinator. Work is partitioned across workers, then validated partial results are aggregated for the client.
+
+## My contributions
+
+My commits and source identify work on the RMI bootstrap service and worker interfaces: registry startup, worker registration and deregistration, peer selection, duplicate-ID checks, and shutdown cleanup.

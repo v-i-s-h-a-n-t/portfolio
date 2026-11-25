@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import { MDXRenderer } from "@/components/content/mdx-renderer";
 import { ProjectTableOfContents } from "@/components/content/project-table-of-contents";
+import { ProjectDetailNavigation } from "@/components/projects/project-detail-navigation";
 import {
   ProjectIllustration,
   ProjectImage,
@@ -133,6 +134,9 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
       <MDXRenderer>
         <Content />
       </MDXRenderer>
+      <ProjectDetailNavigation
+        relatedSlugs={project.metadata.relatedProjects}
+      />
     </article>
   );
 }

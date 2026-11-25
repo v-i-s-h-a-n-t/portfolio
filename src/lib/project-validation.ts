@@ -135,6 +135,23 @@ export function validateProjectMetadata(
       );
     }
 
+    if (
+      project.relatedProjects !== undefined &&
+      (!Array.isArray(project.relatedProjects) ||
+        project.relatedProjects.some(
+          (slug) =>
+            typeof slug !== "string" ||
+            !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) ||
+            slug === project.slug,
+        ) ||
+        new Set(project.relatedProjects).size !==
+          project.relatedProjects.length)
+    ) {
+      throw new Error(
+        `Project "${projectTitle}" has invalid related project slugs.`,
+      );
+    }
+
     validateOptionalUrl(project.repositoryUrl, "repository", projectTitle);
     validateOptionalUrl(project.demoUrl, "demo", projectTitle);
   }

@@ -138,6 +138,30 @@ export function validateProjectContentMetadata(
       headingSlugs.add(headingId);
     }
   }
+  if (value.relatedProjects !== undefined) {
+    if (
+      !Array.isArray(value.relatedProjects) ||
+      !value.relatedProjects.every(
+        (relatedSlug) => typeof relatedSlug === "string",
+      )
+    ) {
+      throw new Error(
+        `Project "${slug}" related projects must be a list of slugs.`,
+      );
+    }
+
+    const relatedSlugs = new Set<string>();
+    for (const relatedSlug of value.relatedProjects) {
+      requireText(relatedSlug, "related project slug", slug);
+      validateSlug(relatedSlug);
+      if (relatedSlug === slug || relatedSlugs.has(relatedSlug)) {
+        throw new Error(
+          `Project "${slug}" related project slugs must be unique and exclude itself.`,
+        );
+      }
+      relatedSlugs.add(relatedSlug);
+    }
+  }
   validateUrls(value, slug);
 
   return value as ProjectContentMetadata;

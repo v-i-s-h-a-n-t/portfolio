@@ -12,8 +12,9 @@ YAML frontmatter is not enabled.
 2. Export the project metadata fields: `title`, `slug`, `description`,
    `category`, `technologies`, `featured`, and `publicationStatus`. The optional
    illustration fields are `image`, `illustrationType`, `repositoryUrl`, and
-   `demoUrl`. Optional `tableOfContents` entries support level-two and level-three
-   headings in the case study body.
+   `demoUrl`, and `relatedProjects`. Optional `tableOfContents` entries support
+   level-two and level-three headings in the case study body. Add related slugs
+   only when there is a confirmed relationship.
 3. Keep incomplete work in `draft` status. A published project needs an approved
    description and category. Only add confirmed technologies, links, and project
    details.

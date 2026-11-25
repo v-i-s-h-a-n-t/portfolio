@@ -16,6 +16,7 @@ type ProjectContentBase = {
   image?: ProjectImage;
   illustrationType?: ProjectIllustrationType;
   tableOfContents?: ProjectTableOfContentsItem[];
+  relatedProjects?: string[];
   repositoryUrl?: string;
   demoUrl?: string;
 };

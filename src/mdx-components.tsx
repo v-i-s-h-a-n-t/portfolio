@@ -70,10 +70,67 @@ function MdxH3({ className, id, children, ...props }: ComponentProps<"h3">) {
   );
 }
 
+function getCodeLanguage(children: ReactNode): string | undefined {
+  for (const child of Children.toArray(children)) {
+    if (!isValidElement<{ className?: string; children?: ReactNode }>(child)) {
+      continue;
+    }
+
+    const languageClass = child.props.className
+      ?.split(/\s+/)
+      .find((className) => className.startsWith("language-"));
+
+    if (languageClass) return languageClass.slice("language-".length);
+
+    const nestedLanguage = getCodeLanguage(child.props.children);
+    if (nestedLanguage) return nestedLanguage;
+  }
+
+  return undefined;
+}
+
+const languageLabels: Record<string, string> = {
+  bash: "Bash",
+  css: "CSS",
+  html: "HTML",
+  java: "Java",
+  javascript: "JavaScript",
+  json: "JSON",
+  jsx: "JSX",
+  markdown: "Markdown",
+  mdx: "MDX",
+  mermaid: "Mermaid",
+  plaintext: "Plain text",
+  python: "Python",
+  shell: "Shell",
+  sql: "SQL",
+  ts: "TypeScript",
+  tsx: "TSX",
+  typescript: "TypeScript",
+  yaml: "YAML",
+};
+
+function MdxPre({ className, children, ...props }: ComponentProps<"pre">) {
+  const language = getCodeLanguage(children);
+  const label = language
+    ? (languageLabels[language.toLowerCase()] ?? language)
+    : "Code";
+
+  return (
+    <figure className="mdx-code-block">
+      <figcaption className="mdx-code-block__label">{label}</figcaption>
+      <pre className={className} {...props}>
+        {children}
+      </pre>
+    </figure>
+  );
+}
+
 const components = {
   a: MdxLink,
   h2: MdxH2,
   h3: MdxH3,
+  pre: MdxPre,
   ProjectImage,
   ProjectIllustration,
 } satisfies MDXComponents;

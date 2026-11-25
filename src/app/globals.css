@@ -232,7 +232,55 @@
     color: var(--muted-foreground);
   }
 
-  .mdx-content pre {
+  .mdx-content .mdx-code-block {
+    margin-block: 1.25rem;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-secondary);
+  }
+
+  .mdx-content .mdx-code-block__label {
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0.875rem;
+    color: var(--muted-foreground);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .mdx-content .mdx-code-block pre {
+    overflow-x: auto;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    padding: 0.875rem;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.65;
+    tab-size: 2;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mdx-content .shiki {
+    background-color: transparent !important;
+  }
+
+  .mdx-content .shiki span {
+    color: var(--shiki-light) !important;
+  }
+
+  .dark .mdx-content .shiki span {
+    color: var(--shiki-dark) !important;
+  }
+
+  .mdx-content .shiki .line {
+    display: inline-block;
+    min-width: 100%;
+  }
+
+  .mdx-content pre:not(.shiki) {
     overflow-x: auto;
     border: 1px solid var(--border);
     border-radius: var(--radius);

@@ -1,48 +1,35 @@
 import { journalContentModules } from "@/content/journal";
 import { projectContentModules } from "@/content/projects";
+import {
+  getPublishedContentBySlug,
+  getPublishedContentEntries,
+  type PublishedContentEntry,
+} from "@/content/queries";
 import type { JournalContentEntry } from "@/content/journal";
 import type { ProjectContentEntry } from "@/content/projects";
-import type {
-  PublishedJournalContentMetadata,
-  PublishedProjectContentMetadata,
-} from "@/content/types";
 
-export type PublishedProjectContentEntry = Omit<
-  ProjectContentEntry,
-  "metadata"
-> & { metadata: PublishedProjectContentMetadata };
+export type PublishedProjectContentEntry =
+  PublishedContentEntry<ProjectContentEntry>;
 
-export type PublishedJournalContentEntry = Omit<
-  JournalContentEntry,
-  "metadata"
-> & { metadata: PublishedJournalContentMetadata };
+export type PublishedJournalContentEntry =
+  PublishedContentEntry<JournalContentEntry>;
 
 export function getPublishedProjectContent(): PublishedProjectContentEntry[] {
-  return projectContentModules.filter(
-    (entry): entry is PublishedProjectContentEntry =>
-      entry.metadata.publicationStatus === "published",
-  );
+  return getPublishedContentEntries(projectContentModules);
 }
 
 export function getProjectContentBySlug(
   slug: string,
 ): PublishedProjectContentEntry | undefined {
-  return getPublishedProjectContent().find(
-    (entry) => entry.metadata.slug === slug,
-  );
+  return getPublishedContentBySlug(projectContentModules, slug);
 }
 
 export function getPublishedJournalContent(): PublishedJournalContentEntry[] {
-  return journalContentModules.filter(
-    (entry): entry is PublishedJournalContentEntry =>
-      entry.metadata.publicationStatus === "published",
-  );
+  return getPublishedContentEntries(journalContentModules);
 }
 
 export function getJournalContentBySlug(
   slug: string,
 ): PublishedJournalContentEntry | undefined {
-  return getPublishedJournalContent().find(
-    (entry) => entry.metadata.slug === slug,
-  );
+  return getPublishedContentBySlug(journalContentModules, slug);
 }

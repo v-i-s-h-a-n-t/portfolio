@@ -19,8 +19,8 @@ YAML frontmatter is not enabled.
 4. Import the MDX component and its `metadata` export in
    `src/content/projects/index.ts`. Add the pair to `sourceModules`; that manifest
    is the project discovery index.
-5. Run `pnpm run lint`, `pnpm run typecheck`, and `pnpm run build` before
-   publishing. Run the content validation tests when available.
+5. Run `pnpm run lint`, `pnpm run typecheck`, `pnpm run build`, and
+   `pnpm run test:content` before publishing.
 
 ## Add a technical article
 
@@ -34,8 +34,7 @@ YAML frontmatter is not enabled.
    category, and valid publication date.
 4. Import the MDX component and metadata in `src/content/journal/index.ts` and
    add them to `sourceModules`. This manifest is the journal discovery index.
-5. Run the validation commands listed above and the content validation tests
-   when available.
+5. Run the validation commands listed above.
 
 ## Publication and rendering
 

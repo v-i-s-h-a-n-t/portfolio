@@ -15,7 +15,23 @@ const nextConfig: NextConfig = {
   },
 };
 
-const withMDX = createMDX();
+const withMDX = createMDX({
+  options: {
+    rehypePlugins: [
+      [
+        "@shikijs/rehype",
+        {
+          themes: {
+            light: "github-light",
+            dark: "github-dark",
+          },
+          defaultColor: false,
+          addLanguageClass: true,
+        },
+      ],
+    ],
+  },
+});
 
 export default withMDX({
   ...nextConfig,

@@ -1,9 +1,15 @@
+import type { Metadata } from "next";
 import { Award } from "lucide-react";
 import { EducationTimeline } from "@/components/shared/education-timeline";
 import { ProfilePortrait } from "@/components/shared/profile-portrait";
 import { achievements } from "@/data/achievements";
 import { education } from "@/data/journey";
 import { profile } from "@/data/profile";
+
+export const metadata: Metadata = {
+  title: `About | ${profile.name}`,
+  description: `${profile.name} is a ${profile.role.toLowerCase()} at ${profile.university}, studying ${profile.degree}.`,
+};
 
 export default function AboutPage() {
   return (

@@ -35,3 +35,9 @@ pnpm dev
 Open `http://localhost:3000`. For a production run, use `pnpm build` followed by `pnpm start`.
 
 `NEXT_PUBLIC_SITE_URL` is optional. Set it to the verified HTTPS production origin when deploying so canonical URLs, sitemap entries, and social metadata use that domain. Do not set it to a placeholder or localhost URL.
+
+## Content authoring
+
+Project case studies are MDX files in `src/content/projects`. Create a file with a unique lowercase, hyphenated slug, export its typed `metadata`, and register the module in `src/content/projects/index.ts`. Keep incomplete entries as `draft`; only `published` entries appear in the project directory, search, and detail routes. Published entries require a confirmed description and category. Add only verified technologies, media, links, and results. See [the MDX authoring guide](docs/MDX_CONTENT.md) for the complete schema and supported components.
+
+The Engineering Journal and its navigation were removed from this repository. There is currently no journal article collection or publishing workflow to document. If a journal is added later, its authoring and publication rules should be documented alongside that implementation.

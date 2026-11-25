@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import { ProjectDirectory } from "@/components/projects/project-directory";
 import { profile } from "@/data/profile";
 import { getPublishedProjects } from "@/lib/projects";
+import { canonicalPath } from "@/lib/site-url";
 
 export const metadata: Metadata = {
   title: `Projects | ${profile.name}`,
   description: "Browse published software projects by category and technology.",
+  alternates: canonicalPath("/projects"),
 };
 
 export default function ProjectsPage() {

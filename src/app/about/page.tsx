@@ -5,10 +5,12 @@ import { ProfilePortrait } from "@/components/shared/profile-portrait";
 import { achievements } from "@/data/achievements";
 import { education } from "@/data/journey";
 import { profile } from "@/data/profile";
+import { canonicalPath } from "@/lib/site-url";
 
 export const metadata: Metadata = {
   title: `About | ${profile.name}`,
   description: `${profile.name} is a ${profile.role.toLowerCase()} at ${profile.university}, studying ${profile.degree}.`,
+  alternates: canonicalPath("/about"),
 };
 
 export default function AboutPage() {

@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import { SocialLinks } from "@/components/shared/social-links";
 import { profile } from "@/data/profile";
+import { canonicalPath } from "@/lib/site-url";
+
+export const metadata: Metadata = {
+  title: `Contact | ${profile.name}`,
+  description: `Contact ${profile.name}, a software engineering student in Fiji.`,
+  alternates: canonicalPath("/contact"),
+};
 
 export default function ContactPage() {
   const { email, github, instagram, linkedin } = profile.socials;

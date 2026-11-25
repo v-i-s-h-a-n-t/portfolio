@@ -9,6 +9,7 @@ import {
   ProjectImage,
 } from "@/components/projects/project-media";
 import { profile } from "@/data/profile";
+import { canonicalPath } from "@/lib/site-url";
 import {
   getProjectContentBySlug,
   getPublishedProjectContent,
@@ -44,6 +45,7 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: canonicalPath(`/projects/${slug}`),
     openGraph: {
       title,
       description,

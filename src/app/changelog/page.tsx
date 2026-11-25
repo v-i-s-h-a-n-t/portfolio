@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import { ExternalLink, GitCommitHorizontal } from "lucide-react";
 import { changelogEntries, portfolioRepositoryUrl } from "@/data/changelog";
 import { profile } from "@/data/profile";
+import { canonicalPath } from "@/lib/site-url";
 
 export const metadata: Metadata = {
   title: `Changelog | ${profile.name}`,
   description: "Completed milestones in the development of this portfolio.",
+  alternates: canonicalPath("/changelog"),
 };
 
 function formatDate(date: string) {

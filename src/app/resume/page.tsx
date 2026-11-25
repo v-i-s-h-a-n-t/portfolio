@@ -3,10 +3,12 @@ import { Download } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { profile } from "@/data/profile";
+import { canonicalPath } from "@/lib/site-url";
 
 export const metadata: Metadata = {
   title: `Résumé | ${profile.name}`,
   description: `View or download ${profile.name}'s résumé.`,
+  alternates: canonicalPath("/resume"),
 };
 
 export default function ResumePage() {

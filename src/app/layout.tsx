@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/footer";
 import { SiteLayout } from "@/components/layout/site-layout";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { profile } from "@/data/profile";
+import { canonicalPath, getSiteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -17,9 +18,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: getSiteUrl(),
   title: `${profile.name} | ${profile.role}`,
   description:
     "Vishant Kumar is a software engineering student in Fiji. Explore his projects, technical skills, and education.",
+  alternates: canonicalPath("/"),
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -1,5 +1,14 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { achievements } from "@/data/achievements";
+import { profile } from "@/data/profile";
+import { canonicalPath } from "@/lib/site-url";
+
+export const metadata: Metadata = {
+  title: `Academic Achievements | ${profile.name}`,
+  description: `Academic recognition received by ${profile.name} at The University of the South Pacific.`,
+  alternates: canonicalPath("/achievements"),
+};
 
 export default function AchievementsPage() {
   return (

@@ -35,3 +35,7 @@ USP ATS is an AI-assisted applicant tracking system for University of the South 
 - Let students sign in, build profiles, search and filter job postings, submit applications, and track or withdraw them.
 - Let administrators create and manage postings, require a second administrator's approval, review applications ranked by AI score, and update application status.
 - Show scoring details including eligibility, qualification and motivation fit, and missing requirements.
+
+## Architecture
+
+Members and administrators sign in through Microsoft Entra ID. The Next.js app serves the interface and API routes; Prisma stores application data in Neon PostgreSQL, while Cloudflare R2 stores files. Submissions enqueue a trigger.dev job that runs Gemini scoring through the Vercel AI SDK and stores the result for administrators to review.

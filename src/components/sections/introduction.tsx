@@ -47,7 +47,12 @@ export function Introduction() {
             </Link>
           </div>
         </div>
-        <ProfilePortrait />
+        <ProfilePortrait
+          image={{
+            src: "/images/vishant-kumar.jpg",
+            alt: "Portrait of Vishant Kumar",
+          }}
+        />
       </div>
     </section>
   );

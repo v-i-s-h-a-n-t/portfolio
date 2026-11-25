@@ -1,4 +1,5 @@
 import { AcademicExcellenceBanner } from "@/components/sections/academic-excellence-banner";
+import { Contact } from "@/components/sections/contact";
 import { FeaturedProjects } from "@/components/sections/featured-projects";
 import { Introduction } from "@/components/sections/introduction";
 import { LatestArticles } from "@/components/sections/latest-articles";
@@ -14,6 +15,7 @@ export default function Home() {
       <TechnicalToolkit />
       <MyJourney />
       <LatestArticles />
+      <Contact />
     </>
   );
 }

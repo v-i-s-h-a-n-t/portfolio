@@ -34,7 +34,7 @@ pnpm dev
 
 Open `http://localhost:3000`. For a production run, use `pnpm build` followed by `pnpm start`.
 
-`NEXT_PUBLIC_SITE_URL` is optional. Set it to the verified HTTPS production origin when deploying so canonical URLs, sitemap entries, and social metadata use that domain. Do not set it to a placeholder or localhost URL.
+Copy `.env.example` to `.env.local` for local production metadata, or set `NEXT_PUBLIC_SITE_URL` in Vercel to `https://vishantk.dev`. This value controls canonical URLs, sitemap entries, robots sitemap reference, and social metadata. The domain is registered; the website is not yet confirmed deployed.
 
 ## Content authoring
 
@@ -57,4 +57,4 @@ pnpm build
 
 `next typegen` creates the route-aware types needed by `LayoutProps` on a fresh checkout. The content tests validate project metadata, slugs, and published-only queries. No Playwright suite is configured.
 
-[GitHub Actions CI](.github/workflows/ci.yml) runs these checks after a frozen-lockfile install on pushes to `main`, pull requests, and manual dispatch. It does not deploy the site; no CD workflow or live deployment URL is configured in this repository.
+[GitHub Actions CI](.github/workflows/ci.yml) runs these checks after a frozen-lockfile install on pushes to `main`, pull requests, and manual dispatch. It does not deploy the site. See [Vercel deployment instructions](docs/DEPLOYMENT.md) to connect the existing GitHub repository and configure the registered domain.

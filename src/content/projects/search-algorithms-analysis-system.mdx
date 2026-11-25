@@ -26,3 +26,15 @@ The Java Swing application runs the search algorithms and empirical tests. OpenC
 ## My contributions
 
 Public commit history records a refactor simplifying the algorithm racing feature.
+
+## Technical diagram
+
+<MermaidDiagram
+  title="Search analysis workflow"
+  description="The desktop application loads list data, runs search algorithms and empirical tests, then presents comparisons using charts."
+  code={`flowchart LR
+    Input[CSV or application data] --> Data[ArrayList or LinkedList]
+    Data --> Search[Search algorithms]
+    Search --> Analysis[Empirical analysis and race]
+    Analysis --> Charts[JFreeChart visualizations]`}
+/>

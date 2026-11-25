@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Layers3 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import type { ProjectMetadata } from "@/types/project";
@@ -6,14 +7,22 @@ import type { ProjectMetadata } from "@/types/project";
 export type ProjectCardProps = {
   project: ProjectMetadata;
   variant?: "illustrated" | "compact";
+  href?: string;
 };
 
 export function ProjectCard({
   project,
   variant = "compact",
+  href,
 }: ProjectCardProps) {
-  return (
-    <Card className="gap-0 rounded-lg border border-border py-0 shadow-sm ring-0">
+  const card = (
+    <Card
+      className={`gap-0 rounded-lg border border-border py-0 shadow-sm ring-0 ${
+        href
+          ? "transition-[border-color,box-shadow] duration-150 group-hover:border-primary/50 group-hover:shadow-md motion-reduce:transition-none"
+          : ""
+      }`}
+    >
       {variant === "illustrated" && project.image ? (
         <div className="relative aspect-video w-full overflow-hidden bg-illustration">
           <Image
@@ -60,4 +69,17 @@ export function ProjectCard({
       </CardContent>
     </Card>
   );
+
+  if (href) {
+    return (
+      <Link
+        className="group block rounded-lg text-foreground no-underline hover:no-underline"
+        href={href}
+      >
+        {card}
+      </Link>
+    );
+  }
+
+  return card;
 }

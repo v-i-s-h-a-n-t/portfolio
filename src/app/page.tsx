@@ -12,11 +12,21 @@ export default function Home() {
       <MotionReveal>
         <Introduction />
       </MotionReveal>
-      <AcademicExcellenceBanner />
-      <FeaturedProjects />
-      <TechnicalToolkit />
-      <MyJourney />
-      <Contact />
+      <MotionReveal mode="viewport">
+        <AcademicExcellenceBanner />
+      </MotionReveal>
+      <MotionReveal mode="viewport">
+        <FeaturedProjects />
+      </MotionReveal>
+      <MotionReveal mode="viewport">
+        <TechnicalToolkit />
+      </MotionReveal>
+      <MotionReveal mode="viewport">
+        <MyJourney />
+      </MotionReveal>
+      <MotionReveal mode="viewport">
+        <Contact />
+      </MotionReveal>
     </>
   );
 }

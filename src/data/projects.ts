@@ -10,6 +10,11 @@ export const projects: ProjectMetadata[] = [
     technologies: [],
     featured: false,
     publicationStatus: "draft",
+    image: {
+      src: "/projects/applicant-tracking-dashboard.svg",
+      alt: "Original conceptual dashboard illustration with summary cards, candidate rows, and status markers; not a screenshot of a real application.",
+    },
+    illustrationType: "interface",
   },
   {
     title: "Distributed Worker Cluster",
@@ -19,6 +24,11 @@ export const projects: ProjectMetadata[] = [
     technologies: [],
     featured: false,
     publicationStatus: "draft",
+    image: {
+      src: "/projects/distributed-worker-cluster.svg",
+      alt: "Conceptual coordinator connected to three worker nodes; not a verified deployment diagram.",
+    },
+    illustrationType: "architecture",
   },
   {
     title: "Student Administration System",

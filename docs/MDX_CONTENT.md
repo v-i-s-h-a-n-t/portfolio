@@ -45,15 +45,66 @@ feed the project and journal listings, search and filters, and slug routes. Draf
 slugs resolve to not found and do not appear in lists. Keep slugs unique within
 each content collection.
 
-Use standard Markdown and MDX headings, lists, blockquotes, links, tables, and
-fenced code blocks. The shared MDX components and `.mdx-content` styles apply the
-site's Geist typography, theme-aware colors, spacing, borders, and code surfaces.
-Start body headings at level two because the page title is already the level-one
-heading. Store referenced images in `public/images` or `public/projects`, and
-provide meaningful alternative text. MDX can use the shared `ProjectImage` and
-`ProjectIllustration` components for responsive media.
+## Supported Markdown and MDX
+
+Content supports standard Markdown paragraphs, level-two and level-three
+headings, ordered and unordered lists, blockquotes, links, tables, horizontal
+rules, inline code, and fenced code blocks. Start body headings at level two
+because the page title is already the level-one heading.
+
+Fenced code blocks are highlighted at build time with Shiki. Add a language
+identifier after the opening fence; use a language supported by Shiki's bundled
+grammars. For example:
+
+````md
+```ts
+export function greet(name: string) {
+  return `Hello, ${name}`;
+}
+```
+````
+
+The rendered block uses the light or dark code theme to match the site, displays
+the language label, and includes a keyboard-accessible copy button. Inline code
+uses the same Geist Mono typography without syntax highlighting. A missing or
+unsupported language is displayed as plain code rather than assigned a guessed
+language.
+
+MDX also has the globally registered `ProjectImage` and `ProjectIllustration`
+components for responsive project media. Store referenced images in
+`public/images` or `public/projects`, and provide meaningful alternative text.
 Project case studies can provide `tableOfContents` metadata with each heading's
 title and level; the shared MDX heading components generate matching anchor IDs.
+
+## Mermaid diagrams
+
+Use the globally registered `MermaidDiagram` component for architecture
+diagrams, flowcharts, or sequence diagrams. Provide a concise title and a
+plain-language description of the relationships and flow; the description is
+shown next to the visual and associated with it for assistive technology. The
+diagram source is also available in a disclosure below the rendered diagram.
+
+```md
+<MermaidDiagram
+title="Request flow"
+description="A browser sends a request to the API, which reads the database and returns a response to the browser."
+code={`sequenceDiagram
+    participant Browser
+    participant API
+    participant Database
+    Browser->>API: Request
+    API->>Database: Read data
+    Database-->>API: Result
+    API-->>Browser: Response`}
+/>
+```
+
+Keep diagram node and edge labels descriptive and concise. Mermaid runs with its
+strict security level: HTML labels and diagram click actions are disabled, and
+diagram source size and edge count are bounded. The SVG is generated in the
+browser; the supplied text description and source remain available if rendering
+fails or a reader does not use the visual. Do not include secrets or private
+data in diagram source.
 
 Next.js does not parse YAML frontmatter by default. Keep metadata as a named
 JavaScript export, and register each content module in its collection manifest

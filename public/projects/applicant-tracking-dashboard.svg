@@ -1,0 +1,231 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" fill="none">
+  <title>Applicant tracking dashboard illustration</title>
+  <desc>
+    An original conceptual dashboard illustration with summary cards and
+    candidate rows. It is not a screenshot of a real application.
+  </desc>
+  <rect
+    x="10"
+    y="10"
+    width="940"
+    height="520"
+    rx="24"
+    fill="#172425"
+    stroke="#344447"
+    stroke-width="2"
+  />
+  <rect
+    x="52"
+    y="54"
+    width="856"
+    height="432"
+    rx="22"
+    fill="#101819"
+    stroke="#405D5B"
+    stroke-width="3"
+  />
+  <path
+    d="M74 55h150v430H74c-12.15 0-22-9.85-22-22V77c0-12.15 9.85-22 22-22Z"
+    fill="#203536"
+  />
+  <rect
+    x="78"
+    y="83"
+    width="28"
+    height="28"
+    rx="8"
+    fill="#2DD4BF"
+    fill-opacity=".18"
+  />
+  <path
+    d="M87 97h10m-5-5v10"
+    stroke="#74E4D5"
+    stroke-width="2"
+    stroke-linecap="round"
+  />
+  <rect
+    x="118"
+    y="88"
+    width="72"
+    height="7"
+    rx="3.5"
+    fill="#C4DCD8"
+    fill-opacity=".76"
+  />
+  <rect
+    x="118"
+    y="101"
+    width="48"
+    height="5"
+    rx="2.5"
+    fill="#75918D"
+    fill-opacity=".7"
+  />
+  <rect
+    x="78"
+    y="143"
+    width="116"
+    height="30"
+    rx="8"
+    fill="#2DD4BF"
+    fill-opacity=".12"
+  />
+  <rect x="88" y="154" width="11" height="9" rx="2" fill="#2DD4BF" />
+  <rect x="108" y="155" width="60" height="7" rx="3.5" fill="#B6D0CC" />
+  <rect x="88" y="196" width="82" height="7" rx="3.5" fill="#71908B" />
+  <rect x="88" y="236" width="93" height="7" rx="3.5" fill="#71908B" />
+  <rect x="88" y="276" width="72" height="7" rx="3.5" fill="#71908B" />
+  <rect x="88" y="316" width="88" height="7" rx="3.5" fill="#71908B" />
+  <rect x="88" y="356" width="78" height="7" rx="3.5" fill="#71908B" />
+  <rect x="250" y="78" width="126" height="22" rx="11" fill="#25393A" />
+  <circle cx="263" cy="89" r="3" fill="#2DD4BF" />
+  <text
+    x="273"
+    y="92"
+    fill="#A8C7C2"
+    font-family="Arial, sans-serif"
+    font-size="9"
+    font-weight="700"
+    letter-spacing="1"
+  >
+    UI CONCEPT
+  </text>
+  <rect
+    x="250"
+    y="117"
+    width="195"
+    height="10"
+    rx="5"
+    fill="#D5E6E3"
+    fill-opacity=".9"
+  />
+  <rect
+    x="250"
+    y="137"
+    width="128"
+    height="6"
+    rx="3"
+    fill="#809996"
+    fill-opacity=".78"
+  />
+  <rect x="250" y="166" width="190" height="94" rx="14" fill="#203536" />
+  <rect x="456" y="166" width="190" height="94" rx="14" fill="#203536" />
+  <rect x="662" y="166" width="190" height="94" rx="14" fill="#203536" />
+  <rect x="266" y="183" width="35" height="7" rx="3.5" fill="#72928D" />
+  <rect x="472" y="183" width="35" height="7" rx="3.5" fill="#72928D" />
+  <rect x="678" y="183" width="35" height="7" rx="3.5" fill="#72928D" />
+  <rect
+    x="266"
+    y="207"
+    width="72"
+    height="9"
+    rx="4.5"
+    fill="#2DD4BF"
+    fill-opacity=".8"
+  />
+  <rect
+    x="472"
+    y="207"
+    width="82"
+    height="9"
+    rx="4.5"
+    fill="#2DD4BF"
+    fill-opacity=".8"
+  />
+  <rect
+    x="678"
+    y="207"
+    width="61"
+    height="9"
+    rx="4.5"
+    fill="#2DD4BF"
+    fill-opacity=".8"
+  />
+  <rect x="266" y="232" width="104" height="6" rx="3" fill="#627E7A" />
+  <rect x="472" y="232" width="92" height="6" rx="3" fill="#627E7A" />
+  <rect x="678" y="232" width="115" height="6" rx="3" fill="#627E7A" />
+  <rect x="250" y="283" width="602" height="34" rx="9" fill="#1B2A2B" />
+  <rect x="250" y="327" width="602" height="34" rx="9" fill="#1B2A2B" />
+  <rect x="250" y="371" width="602" height="34" rx="9" fill="#1B2A2B" />
+  <rect x="250" y="415" width="602" height="34" rx="9" fill="#1B2A2B" />
+  <circle cx="270" cy="300" r="5" fill="#2DD4BF" />
+  <circle cx="270" cy="344" r="5" fill="#D8B56D" />
+  <circle cx="270" cy="388" r="5" fill="#8EB8B0" />
+  <circle cx="270" cy="432" r="5" fill="#2DD4BF" />
+  <rect
+    x="286"
+    y="296"
+    width="111"
+    height="7"
+    rx="3.5"
+    fill="#B8D0CC"
+    fill-opacity=".72"
+  />
+  <rect
+    x="286"
+    y="340"
+    width="126"
+    height="7"
+    rx="3.5"
+    fill="#B8D0CC"
+    fill-opacity=".72"
+  />
+  <rect
+    x="286"
+    y="384"
+    width="101"
+    height="7"
+    rx="3.5"
+    fill="#B8D0CC"
+    fill-opacity=".72"
+  />
+  <rect
+    x="286"
+    y="428"
+    width="118"
+    height="7"
+    rx="3.5"
+    fill="#B8D0CC"
+    fill-opacity=".72"
+  />
+  <rect
+    x="760"
+    y="294"
+    width="68"
+    height="12"
+    rx="6"
+    fill="#2DD4BF"
+    fill-opacity=".2"
+  />
+  <rect
+    x="760"
+    y="338"
+    width="68"
+    height="12"
+    rx="6"
+    fill="#D8B56D"
+    fill-opacity=".2"
+  />
+  <rect
+    x="760"
+    y="382"
+    width="68"
+    height="12"
+    rx="6"
+    fill="#8EB8B0"
+    fill-opacity=".2"
+  />
+  <rect
+    x="760"
+    y="426"
+    width="68"
+    height="12"
+    rx="6"
+    fill="#2DD4BF"
+    fill-opacity=".2"
+  />
+  <circle cx="771" cy="300" r="3" fill="#2DD4BF" />
+  <circle cx="771" cy="344" r="3" fill="#D8B56D" />
+  <circle cx="771" cy="388" r="3" fill="#8EB8B0" />
+  <circle cx="771" cy="432" r="3" fill="#2DD4BF" />
+</svg>

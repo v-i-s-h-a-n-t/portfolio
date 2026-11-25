@@ -16,10 +16,9 @@ in Git.
 | `src/components/shared`    | Reusable presentation that is not tied to one feature or page section.                                                                                                 |
 | `src/components/providers` | React providers needed by the component tree, including theme support when configured.                                                                                 |
 | `src/components/projects`  | Project-specific cards, visuals, and presentation.                                                                                                                     |
-| `src/components/journal`   | Journal article rows, article metadata, and related presentation.                                                                                                      |
 | `src/components/ui`        | Reusable low-level interface primitives, including shadcn/ui components.                                                                                               |
 | `src/data`                 | Structured static data or data access and transformation code that is not authored as page copy.                                                                       |
-| `src/content`              | Typed portfolio content: identity, projects, education, toolkit, and journal entries. Keep content separate from its rendering.                                        |
+| `src/content`              | Typed portfolio content: identity, projects, education, and toolkit. Keep content separate from its rendering.                                                         |
 | `src/types`                | Shared domain types used across content, data, and components. Prefer types close to their single use until they need to be shared.                                    |
 | `src/hooks`                | Reusable React hooks, especially hooks that need client-side state or browser APIs.                                                                                    |
 | `src/lib`                  | Small shared utilities and integrations that do not belong to a feature or UI component.                                                                               |
@@ -34,13 +33,12 @@ in Git.
 - `src/app` owns routing. A route is exposed through Next.js route files; keep
   reusable non-route code in the shared `src` directories above.
 - Keep content and its types independent of presentation. Components receive
-  typed values rather than embedding personal details, project copy, or article
-  records in JSX.
+  typed values rather than embedding personal details or project copy in JSX.
 - Use Server Components by default. Isolate Client Components to interactions
   that require state, event handlers, context, or browser APIs.
-- Keep `src/components/ui` primitives generic. Put project or journal-specific
-  display in the corresponding feature directory and assemble larger page
-  regions in `src/components/sections`.
+- Keep `src/components/ui` primitives generic. Put project-specific display in
+  the corresponding feature directory and assemble larger page regions in
+  `src/components/sections`.
 - Put only approved, intentionally public assets in `public`. Secrets belong in
   environment configuration and private files must stay outside the repository.
 - Reuse the existing TypeScript, Tailwind CSS v4, shadcn/ui, and utility setup;

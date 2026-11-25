@@ -29,7 +29,7 @@ animation, particle effects, and generic AI-generated hero designs.
 | Expected graduation | 2028                                |
 
 Only publish supplied or verified personal information. Do not invent project
-results, employment history, article content, social URLs, or academic details.
+results, employment history, project details, social URLs, or academic details.
 
 ## Design tokens
 
@@ -71,8 +71,8 @@ Maintain this section order within the shared content container.
 ### 1. Navbar
 
 Compact sticky navigation with a thin bottom border and an opaque theme-aware
-background. Place `vk.` on the left and Home, About, Projects, and Journal on the
-right, followed by GitHub and theme controls. Provide a clear active state,
+background. Place `vk.` on the left and Home, About, and Projects on the right,
+followed by GitHub and theme controls. Provide a clear active state,
 keyboard focus, and accessible names for icon controls.
 
 ### 2. Introduction
@@ -120,17 +120,12 @@ categories; category names and skill lists remain pending supplied content.
 A minimal education timeline showing the supplied university, degree, and expected
 2028 graduation. Do not invent enrollment dates or additional milestones.
 
-### 7. Engineering Journal
-
-Clean article rows with titles, categories, and arrows. Keep separators subtle and
-rows easy to scan. Publish only real articles with valid destinations.
-
-### 8. Contact
+### 7. Contact
 
 A concise invitation to connect followed by verified social links. Do not display
 private contact details or placeholder destinations as working links.
 
-### 9. Footer
+### 8. Footer
 
 A subtle top border, copyright on the left, and “Built with Next.js” on the right.
 Use the current year and Vishant Kumar's name. Stack gracefully on small screens.
@@ -156,9 +151,9 @@ next-themes, pnpm, ESLint, and Prettier. Avoid unnecessary dependencies.
 
 Keep route composition in `src/app`, reusable presentation in `src/components`,
 and shared utilities in `src/lib`. Reuse existing UI primitives. Store typed
-identity, project, education, toolkit, and journal content separately from
-presentation, for example in `src/content` when implementation begins. Keep public
-approved images and documents in `public`; never include secrets or private files.
+identity, project, education, and toolkit content separately from presentation,
+for example in `src/content`. Keep approved public images and documents in
+`public`; never include secrets or private files.
 
 Use Server Components by default. Isolate Client Components to theme controls,
 interactive navigation, and interactions that require browser state. Define theme

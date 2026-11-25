@@ -1,7 +1,4 @@
-import type {
-  JournalContentMetadata,
-  ProjectContentMetadata,
-} from "@/content/types";
+import type { ProjectContentMetadata } from "@/content/types";
 
 const projectIllustrationTypes = new Set([
   "architecture",
@@ -165,65 +162,6 @@ export function validateProjectContentMetadata(
   validateUrls(value, slug);
 
   return value as ProjectContentMetadata;
-}
-
-export function validateJournalContentMetadata(
-  value: unknown,
-): JournalContentMetadata {
-  if (!isRecord(value)) throw new Error("Journal metadata must be an object.");
-
-  const slug = typeof value.slug === "string" ? value.slug : "<unknown>";
-  requireText(value.title, "title", slug);
-  requireText(value.slug, "slug", slug);
-  validateSlug(slug);
-
-  if (
-    value.publicationStatus !== "draft" &&
-    value.publicationStatus !== "published"
-  ) {
-    throw new Error(`Article "${slug}" has an invalid publication status.`);
-  }
-  if (value.summary !== null && typeof value.summary !== "string") {
-    throw new Error(`Article "${slug}" summary must be text or null.`);
-  }
-  if (value.category !== null && typeof value.category !== "string") {
-    throw new Error(`Article "${slug}" category must be text or null.`);
-  }
-  if (
-    !Array.isArray(value.tags) ||
-    !value.tags.every((item) => typeof item === "string")
-  ) {
-    throw new Error(`Article "${slug}" tags must be a list of strings.`);
-  }
-  if (
-    value.publicationDate !== null &&
-    typeof value.publicationDate !== "string"
-  ) {
-    throw new Error(`Article "${slug}" publication date must be text or null.`);
-  }
-  if (value.publicationStatus === "published") {
-    requireText(value.summary, "summary", slug);
-    requireText(value.category, "category", slug);
-    requireText(value.publicationDate, "publication date", slug);
-    if (typeof value.publicationDate !== "string") {
-      throw new Error(`Article "${slug}" publication date must be a string.`);
-    }
-    const publicationDate = value.publicationDate;
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(publicationDate)) {
-      throw new Error(
-        `Article "${slug}" publication date must use YYYY-MM-DD.`,
-      );
-    }
-    const date = new Date(`${publicationDate}T00:00:00.000Z`);
-    if (
-      Number.isNaN(date.getTime()) ||
-      date.toISOString().slice(0, 10) !== publicationDate
-    ) {
-      throw new Error(`Article "${slug}" publication date is invalid.`);
-    }
-  }
-
-  return value as JournalContentMetadata;
 }
 
 export function validateUniqueContentSlugs(

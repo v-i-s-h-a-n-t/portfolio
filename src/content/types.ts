@@ -37,35 +37,6 @@ export type PublishedProjectContentMetadata = Omit<
 export type ProjectContentMetadata =
   DraftProjectContentMetadata | PublishedProjectContentMetadata;
 
-type JournalContentBase = {
-  title: string;
-  slug: string;
-  summary: string | null;
-  category: string | null;
-  tags: string[];
-  publicationDate: string | null;
-};
-
-export type DraftJournalContentMetadata = JournalContentBase & {
-  publicationStatus: "draft";
-};
-
-export type PublishedJournalContentMetadata = Omit<
-  JournalContentBase,
-  "summary" | "category" | "publicationDate"
-> & {
-  summary: string;
-  category: string;
-  publicationDate: string;
-  publicationStatus: "published";
-};
-
-export type JournalContentMetadata =
-  DraftJournalContentMetadata | PublishedJournalContentMetadata;
-
-export type TechnicalContentMetadata =
-  ProjectContentMetadata | JournalContentMetadata;
-
 export type MDXContentModule<Metadata> = {
   metadata: Metadata;
   default: ComponentType<MDXProps>;

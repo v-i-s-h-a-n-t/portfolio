@@ -5,7 +5,6 @@ import {
   getPublishedContentEntries,
 } from "../src/content/queries.ts";
 import {
-  validateJournalContentMetadata,
   validateProjectContentMetadata,
   validateUniqueContentSlugs,
 } from "../src/content/validation.ts";
@@ -58,31 +57,6 @@ test("project table of contents accepts unique level-two and level-three heading
         ],
       }),
     /headings must be unique/,
-  );
-});
-
-test("journal metadata validates required published fields and ISO dates", () => {
-  const article = {
-    title: "Test Article",
-    slug: "test-article",
-    summary: "A test summary.",
-    category: "Testing",
-    tags: ["validation"],
-    publicationDate: "2025-04-01",
-    publicationStatus: "published",
-  };
-
-  assert.equal(
-    validateJournalContentMetadata(article).publicationStatus,
-    "published",
-  );
-  assert.throws(
-    () =>
-      validateJournalContentMetadata({
-        ...article,
-        publicationDate: "2025-02-30",
-      }),
-    /publication date is invalid/,
   );
 });
 

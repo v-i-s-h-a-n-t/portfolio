@@ -2,7 +2,6 @@ import { AcademicExcellenceBanner } from "@/components/sections/academic-excelle
 import { Contact } from "@/components/sections/contact";
 import { FeaturedProjects } from "@/components/sections/featured-projects";
 import { Introduction } from "@/components/sections/introduction";
-import { LatestArticles } from "@/components/sections/latest-articles";
 import { MyJourney } from "@/components/sections/my-journey";
 import { TechnicalToolkit } from "@/components/sections/technical-toolkit";
 
@@ -14,7 +13,6 @@ export default function Home() {
       <FeaturedProjects />
       <TechnicalToolkit />
       <MyJourney />
-      <LatestArticles />
       <Contact />
     </>
   );

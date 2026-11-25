@@ -1,9 +1,8 @@
 # Authoring Local MDX Content
 
-Project and journal content lives in `src/content/projects` and
-`src/content/journal`. The installed Next.js MDX integration compiles these
-files. Each MDX file exports a `metadata` object and provides its body as MDX.
-YAML frontmatter is not enabled.
+Project content lives in `src/content/projects`. The installed Next.js MDX
+integration compiles these files. Each MDX file exports a `metadata` object and
+provides its body as MDX. YAML frontmatter is not enabled.
 
 ## Add a project
 
@@ -24,26 +23,11 @@ YAML frontmatter is not enabled.
 5. Run `pnpm run lint`, `pnpm run typecheck`, `pnpm run build`, and
    `pnpm run test:content` before publishing.
 
-## Add a technical article
-
-1. Create `src/content/journal/<slug>.mdx` only when there is a real article to
-   publish or review. Do not add sample article titles or fabricated body text.
-2. Export `title`, `slug`, `summary`, `category`, `tags`, `publicationDate`, and
-   `publicationStatus`. Use an ISO `YYYY-MM-DD` date when the article is
-   published.
-3. Keep an article in `draft` status while its summary, category, publication
-   date, or text is unfinished. A published article needs a non-empty summary,
-   category, and valid publication date.
-4. Import the MDX component and metadata in `src/content/journal/index.ts` and
-   add them to `sourceModules`. This manifest is the journal discovery index.
-5. Run the validation commands listed above.
-
 ## Publication and rendering
 
 The `publicationStatus` value controls public visibility. Published-only loaders
-feed the project and journal listings, search and filters, and slug routes. Draft
-slugs resolve to not found and do not appear in lists. Keep slugs unique within
-each content collection.
+feed project listings, search and filters, and slug routes. Draft slugs resolve
+to not found and do not appear in lists. Keep project slugs unique.
 
 ## Supported Markdown and MDX
 

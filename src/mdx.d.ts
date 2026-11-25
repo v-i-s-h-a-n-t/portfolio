@@ -1,5 +1,5 @@
 declare module "*.mdx" {
-  import type { TechnicalContentMetadata } from "@/content/types";
+  import type { ProjectContentMetadata } from "@/content/types";
 
-  export const metadata: TechnicalContentMetadata;
+  export const metadata: ProjectContentMetadata;
 }

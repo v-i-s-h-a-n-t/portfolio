@@ -1,5 +1,22 @@
-import type { JournalContentMetadata, MDXContentModule } from "@/content/types";
+import type { MDXContentModule, JournalContentMetadata } from "@/content/types";
+import {
+  validateJournalContentMetadata,
+  validateUniqueContentSlugs,
+} from "@/content/validation";
 
-/** Add an MDX module here when a real article is ready for review. */
-export const journalContentModules: readonly MDXContentModule<JournalContentMetadata>[] =
-  [];
+const sourceModules: MDXContentModule<unknown>[] = [];
+
+export type JournalContentEntry = {
+  metadata: JournalContentMetadata;
+  default: MDXContentModule<unknown>["default"];
+};
+
+/** Register real article modules here; drafts remain excluded by the loaders. */
+export const journalContentModules: JournalContentEntry[] = sourceModules.map(
+  ({ metadata, default: Content }) => ({
+    metadata: validateJournalContentMetadata(metadata),
+    default: Content,
+  }),
+);
+
+validateUniqueContentSlugs(journalContentModules, "article");

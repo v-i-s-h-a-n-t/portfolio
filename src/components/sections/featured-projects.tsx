@@ -1,40 +1,31 @@
 import { ProjectCard } from "@/components/projects/project-card";
 import { SectionHeading } from "@/components/shared/section-heading";
-import { projects } from "@/data/projects";
-
-const selectedProjectSlugs = [
-  "applicant-tracking-system",
-  "distributed-worker-cluster",
-  "student-administration-system",
-  "antibiotic-resistance-analysis",
-] as const;
-
-const selectedProjects = selectedProjectSlugs.map((slug) => {
-  const project = projects.find((entry) => entry.slug === slug);
-
-  if (!project) {
-    throw new Error(`Selected project "${slug}" is missing from the registry.`);
-  }
-
-  return project;
-});
+import { getFeaturedProjects } from "@/lib/projects";
 
 export function FeaturedProjects() {
+  const featuredProjects = getFeaturedProjects();
+
   return (
     <section aria-label="Selected work" className="space-y-6">
       <SectionHeading
         title="Selected Work"
         link={{ href: "/projects", label: "All projects" }}
       />
-      <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2">
-        {selectedProjects.map((project, index) => (
-          <ProjectCard
-            key={project.slug}
-            project={project}
-            variant={index < 2 ? "illustrated" : "compact"}
-          />
-        ))}
-      </div>
+      {featuredProjects.length > 0 ? (
+        <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2">
+          {featuredProjects.map((project) => (
+            <ProjectCard
+              key={project.slug}
+              project={project}
+              variant={project.image ? "illustrated" : "compact"}
+            />
+          ))}
+        </div>
+      ) : (
+        <p className="text-sm text-muted-foreground">
+          Featured projects will appear here when they are published.
+        </p>
+      )}
     </section>
   );
 }

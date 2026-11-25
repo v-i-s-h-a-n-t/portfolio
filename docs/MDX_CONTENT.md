@@ -48,7 +48,8 @@ fenced code blocks. The shared MDX components and `.mdx-content` styles apply th
 site's Geist typography, theme-aware colors, spacing, borders, and code surfaces.
 Start body headings at level two because the page title is already the level-one
 heading. Store referenced images in `public/images` or `public/projects`, and
-provide meaningful alternative text.
+provide meaningful alternative text. MDX can use the shared `ProjectImage` and
+`ProjectIllustration` components for responsive media.
 
 Next.js does not parse YAML frontmatter by default. Keep metadata as a named
 JavaScript export, and register each content module in its collection manifest

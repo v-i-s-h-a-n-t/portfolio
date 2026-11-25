@@ -1,5 +1,9 @@
 import type { MDXComponents } from "mdx/types";
 import type { ComponentProps } from "react";
+import {
+  ProjectIllustration,
+  ProjectImage,
+} from "@/components/projects/project-media";
 import { cn } from "@/lib/utils";
 
 function MdxLink({ className, ...props }: ComponentProps<"a">) {
@@ -16,6 +20,8 @@ function MdxLink({ className, ...props }: ComponentProps<"a">) {
 
 const components = {
   a: MdxLink,
+  ProjectImage,
+  ProjectIllustration,
 } satisfies MDXComponents;
 
 export function useMDXComponents(): MDXComponents {

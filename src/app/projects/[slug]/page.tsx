@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { ArrowUpRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import { MDXRenderer } from "@/components/content/mdx-renderer";
+import {
+  ProjectIllustration,
+  ProjectImage,
+} from "@/components/projects/project-media";
 import { profile } from "@/data/profile";
 import {
   getProjectContentBySlug,
@@ -91,6 +95,19 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           </ul>
         ) : null}
       </header>
+      {project.metadata.image ? (
+        project.metadata.illustrationType ? (
+          <ProjectIllustration
+            alt={project.metadata.image.alt}
+            src={project.metadata.image.src}
+          />
+        ) : (
+          <ProjectImage
+            alt={project.metadata.image.alt}
+            src={project.metadata.image.src}
+          />
+        )
+      ) : null}
       <MDXRenderer>
         <Content />
       </MDXRenderer>

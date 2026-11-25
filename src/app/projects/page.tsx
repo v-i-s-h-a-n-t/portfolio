@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { ProjectDirectory } from "@/components/projects/project-directory";
+import { profile } from "@/data/profile";
 import { getPublishedProjects } from "@/lib/projects";
+
+export const metadata: Metadata = {
+  title: `Projects | ${profile.name}`,
+  description: "Browse published software projects by category and technology.",
+};
 
 export default function ProjectsPage() {
   const projects = getPublishedProjects();

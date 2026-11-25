@@ -1,4 +1,5 @@
 import { Container } from "@/components/layout/container";
+import { Navbar } from "@/components/layout/navbar";
 import type { ReactNode } from "react";
 
 export function SiteLayout({ children }: { children: ReactNode }) {
@@ -10,6 +11,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       >
         Skip to content
       </a>
+      <Navbar />
       <main
         id="main-content"
         className="flex-1 py-10 md:py-12 lg:py-16"

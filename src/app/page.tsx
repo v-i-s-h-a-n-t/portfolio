@@ -1,6 +1,7 @@
 import { AcademicExcellenceBanner } from "@/components/sections/academic-excellence-banner";
 import { FeaturedProjects } from "@/components/sections/featured-projects";
 import { Introduction } from "@/components/sections/introduction";
+import { TechnicalToolkit } from "@/components/sections/technical-toolkit";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Introduction />
       <AcademicExcellenceBanner />
       <FeaturedProjects />
+      <TechnicalToolkit />
     </>
   );
 }

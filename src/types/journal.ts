@@ -2,7 +2,6 @@ type ArticleBase = {
   title: string;
   slug: string;
   tags: string[];
-  href?: string;
 };
 
 export type DraftJournalArticle = ArticleBase & {
@@ -10,6 +9,7 @@ export type DraftJournalArticle = ArticleBase & {
   category: string | null;
   publicationDate: string | null;
   publicationStatus: "draft";
+  href?: string;
 };
 
 export type PublishedJournalArticle = ArticleBase & {
@@ -17,6 +17,7 @@ export type PublishedJournalArticle = ArticleBase & {
   category: string;
   publicationDate: string;
   publicationStatus: "published";
+  href: string;
 };
 
 export type JournalArticle = DraftJournalArticle | PublishedJournalArticle;

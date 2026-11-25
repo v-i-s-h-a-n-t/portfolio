@@ -34,30 +34,22 @@ export function ArticleListItem({
           </time>
         </p>
       </div>
-      {article.href ? (
-        <ArrowUpRight
-          aria-hidden="true"
-          className="size-5 shrink-0 text-muted-foreground transition-colors duration-150 group-hover:text-primary motion-reduce:transition-none"
-        />
-      ) : null}
+      <ArrowUpRight
+        aria-hidden="true"
+        className="size-5 shrink-0 text-muted-foreground transition-colors duration-150 group-hover:text-primary motion-reduce:transition-none"
+      />
     </>
   );
 
   return (
     <li className="border-b border-border last:border-b-0">
       <article>
-        {article.href ? (
-          <Link
-            className="group flex items-center justify-between gap-4 rounded-sm px-1 py-5 text-foreground no-underline hover:text-primary hover:no-underline"
-            href={article.href}
-          >
-            {content}
-          </Link>
-        ) : (
-          <div className="flex items-center justify-between gap-4 px-1 py-5">
-            {content}
-          </div>
-        )}
+        <Link
+          className="group flex items-center justify-between gap-4 rounded-sm px-1 py-5 text-foreground no-underline hover:text-primary hover:no-underline"
+          href={article.href}
+        >
+          {content}
+        </Link>
       </article>
     </li>
   );

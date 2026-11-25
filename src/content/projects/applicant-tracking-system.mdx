@@ -43,3 +43,20 @@ Members and administrators sign in through Microsoft Entra ID. The Next.js app s
 ## My contributions
 
 The project README identifies my role as Full-stack Developer. My public commits show work on student profile management and onboarding, the profile wizard and validation, and optional certificate handling.
+
+## Technical diagram
+
+<MermaidDiagram
+  title="Documented application architecture"
+  description="Members and administrators authenticate through Entra ID. The Next.js app uses Prisma with Neon PostgreSQL and Cloudflare R2. Application submissions enqueue a trigger.dev worker that scores applications with Gemini and stores the results."
+  code={`flowchart LR
+    User[Student or administrator] --> Auth[Microsoft Entra ID]
+    Auth --> App[Next.js app and API]
+    App --> Prisma[Prisma]
+    Prisma --> DB[(Neon PostgreSQL)]
+    App --> R2[Cloudflare R2]
+    App --> Trigger[trigger.dev job]
+    Trigger --> Worker[Scoring worker]
+    Worker --> Gemini[Gemini via Vercel AI SDK]
+    Worker --> DB`}
+/>

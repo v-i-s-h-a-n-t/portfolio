@@ -308,6 +308,53 @@
     min-width: 100%;
   }
 
+  .mdx-content .mdx-diagram {
+    margin-block: 1.5rem;
+  }
+
+  .mdx-content .mdx-diagram__figure {
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-secondary);
+  }
+
+  .mdx-content .mdx-diagram__title {
+    border-bottom: 1px solid var(--border);
+    padding: 0.625rem 0.875rem;
+    color: var(--muted-foreground);
+    font-size: 0.8125rem;
+    font-weight: 500;
+  }
+
+  .mdx-content .mdx-diagram__canvas {
+    display: grid;
+    min-height: 8rem;
+    place-items: center;
+    overflow-x: auto;
+    padding: 1rem;
+  }
+
+  .mdx-content .mdx-diagram__canvas svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .mdx-content .mdx-diagram__description,
+  .mdx-content .mdx-diagram__error {
+    margin-block: 0.625rem;
+    color: var(--muted-foreground);
+    font-size: 0.875rem;
+  }
+
+  .mdx-content .mdx-diagram__source summary {
+    width: fit-content;
+    cursor: pointer;
+    color: var(--primary);
+    font-size: 0.875rem;
+  }
+
   .mdx-content pre:not(.shiki) {
     overflow-x: auto;
     border: 1px solid var(--border);

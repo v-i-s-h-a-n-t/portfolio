@@ -10,6 +10,7 @@ import {
   ProjectImage,
 } from "@/components/projects/project-media";
 import { CopyCodeButton } from "@/components/shared/copy-code-button";
+import { MermaidDiagram } from "@/components/shared/mermaid-diagram";
 import { cn } from "@/lib/utils";
 import { slugifyHeading } from "@/lib/slugify-heading";
 
@@ -135,6 +136,7 @@ const components = {
   h2: MdxH2,
   h3: MdxH3,
   pre: MdxPre,
+  MermaidDiagram,
   ProjectImage,
   ProjectIllustration,
 } satisfies MDXComponents;

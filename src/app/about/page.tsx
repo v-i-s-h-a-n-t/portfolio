@@ -35,6 +35,26 @@ export default function AboutPage() {
         </p>
       </section>
 
+      <section aria-labelledby="about-interests-heading" className="space-y-4">
+        <h2 className="text-xl font-semibold" id="about-interests-heading">
+          Technical interests
+        </h2>
+        <ul className="grid gap-3 sm:grid-cols-3">
+          {[
+            "Building software",
+            "Exploring emerging technologies",
+            "Solving complex engineering problems",
+          ].map((interest) => (
+            <li
+              className="rounded-lg border border-border bg-card px-4 py-3 text-muted-foreground"
+              key={interest}
+            >
+              {interest}
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <div className="grid gap-5 md:grid-cols-2">
         <section
           aria-labelledby="about-education-heading"

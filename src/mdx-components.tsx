@@ -9,6 +9,7 @@ import {
   ProjectIllustration,
   ProjectImage,
 } from "@/components/projects/project-media";
+import { CopyCodeButton } from "@/components/shared/copy-code-button";
 import { cn } from "@/lib/utils";
 import { slugifyHeading } from "@/lib/slugify-heading";
 
@@ -118,7 +119,10 @@ function MdxPre({ className, children, ...props }: ComponentProps<"pre">) {
 
   return (
     <figure className="mdx-code-block">
-      <figcaption className="mdx-code-block__label">{label}</figcaption>
+      <figcaption className="mdx-code-block__header">
+        <span className="mdx-code-block__label">{label}</span>
+        <CopyCodeButton code={getTextContent(children)} />
+      </figcaption>
       <pre className={className} {...props}>
         {children}
       </pre>

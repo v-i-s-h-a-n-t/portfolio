@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { ProjectCard } from "@/components/projects/project-card";
+import { Button } from "@/components/ui/button";
 import type { ProjectMetadata } from "@/types/project";
 
 export function ProjectDirectory({
@@ -45,12 +46,31 @@ export function ProjectDirectory({
       (!technology || project.technologies.includes(technology))
     );
   });
+  const hasActiveFilters = Boolean(search.trim() || category || technology);
+  const clearFilters = () => {
+    setSearch("");
+    setCategory("");
+    setTechnology("");
+  };
 
   if (projects.length === 0) {
     return (
-      <p className="rounded-lg border border-border bg-card p-5 text-muted-foreground">
-        No projects have been published yet. Please check back later.
-      </p>
+      <div className="space-y-4">
+        <p aria-live="polite" className="text-sm text-muted-foreground">
+          0 published projects
+        </p>
+        <div
+          className="space-y-2 rounded-lg border border-border bg-card p-5"
+          role="status"
+        >
+          <h2 className="font-heading text-lg font-semibold">
+            No published projects yet
+          </h2>
+          <p className="text-muted-foreground">
+            Project details will appear here when they are ready to share.
+          </p>
+        </div>
+      </div>
     );
   }
 
@@ -101,6 +121,19 @@ export function ProjectDirectory({
         </label>
       </div>
 
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <p aria-live="polite" className="text-sm text-muted-foreground">
+          {hasActiveFilters
+            ? `Showing ${filteredProjects.length} of ${projects.length} projects`
+            : `${projects.length} published ${projects.length === 1 ? "project" : "projects"}`}
+        </p>
+        {hasActiveFilters ? (
+          <Button onClick={clearFilters} type="button" variant="outline">
+            Clear filters
+          </Button>
+        ) : null}
+      </div>
+
       {filteredProjects.length > 0 ? (
         <div className="grid grid-cols-1 items-stretch gap-5 md:grid-cols-2">
           {filteredProjects.map((project) => (
@@ -112,9 +145,18 @@ export function ProjectDirectory({
           ))}
         </div>
       ) : (
-        <p className="rounded-lg border border-border bg-card p-5 text-muted-foreground">
-          No projects match the selected filters.
-        </p>
+        <div
+          aria-live="polite"
+          className="space-y-2 rounded-lg border border-border bg-card p-5"
+          role="status"
+        >
+          <h2 className="font-heading text-lg font-semibold">
+            No matching projects
+          </h2>
+          <p className="text-muted-foreground">
+            Try a different search or clear the selected filters.
+          </p>
+        </div>
       )}
     </div>
   );

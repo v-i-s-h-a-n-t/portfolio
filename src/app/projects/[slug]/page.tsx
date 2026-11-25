@@ -34,9 +34,27 @@ export async function generateMetadata({
 
   if (!project) notFound();
 
+  const title = `${project.metadata.title} | ${profile.name}`;
+  const description = project.metadata.description;
+  const images = project.metadata.image
+    ? [{ url: project.metadata.image.src, alt: project.metadata.image.alt }]
+    : undefined;
+
   return {
-    title: `${project.metadata.title} | ${profile.name}`,
-    description: project.metadata.description,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      ...(images ? { images } : {}),
+    },
+    twitter: {
+      card: images ? "summary_large_image" : "summary",
+      title,
+      description,
+      ...(images ? { images: images.map((image) => image.url) } : {}),
+    },
   };
 }
 

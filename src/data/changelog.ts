@@ -1,5 +1,8 @@
 import type { PortfolioChangelogEntry } from "@/types/changelog";
 
+export const portfolioRepositoryUrl =
+  "https://github.com/v-i-s-h-a-n-t/portfolio";
+
 export const changelogEntries = [
   {
     id: "portfolio-foundation",

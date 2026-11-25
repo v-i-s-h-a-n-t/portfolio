@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { changelogEntries } from "@/data/changelog";
+import { ExternalLink, GitCommitHorizontal } from "lucide-react";
+import { changelogEntries, portfolioRepositoryUrl } from "@/data/changelog";
 import { profile } from "@/data/profile";
 
 export const metadata: Metadata = {
@@ -49,6 +50,29 @@ export default function ChangelogPage() {
               <p className="max-w-prose text-muted-foreground">
                 {entry.summary}
               </p>
+              <ul
+                aria-label={`GitHub commits for ${entry.title}`}
+                className="flex flex-wrap gap-x-3 gap-y-2 pt-1"
+              >
+                {entry.commitShas.map((sha) => (
+                  <li key={sha}>
+                    <a
+                      aria-label={`View commit ${sha.slice(0, 7)} on GitHub`}
+                      className="inline-flex items-center gap-1 text-sm text-primary underline-offset-4 hover:underline focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-ring"
+                      href={`${portfolioRepositoryUrl}/commit/${sha}`}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <GitCommitHorizontal
+                        aria-hidden="true"
+                        className="size-4"
+                      />
+                      <span className="font-mono">{sha.slice(0, 7)}</span>
+                      <ExternalLink aria-hidden="true" className="size-3" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </article>
           </li>
         ))}

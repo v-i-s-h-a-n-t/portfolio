@@ -121,13 +121,17 @@ export function CommandPalette({ index }: CommandPaletteProps) {
       <Dialog.Trigger
         render={
           <Button
-            aria-label="Open search"
-            className="size-9 rounded-full text-muted-foreground hover:text-foreground"
-            size="icon"
+            aria-label="Open search (Command+K or Control+K)"
+            className="h-9 rounded-md px-2 text-muted-foreground hover:text-foreground sm:px-2.5"
+            size="sm"
             type="button"
             variant="ghost"
           >
             <Search aria-hidden="true" className="size-5" />
+            <span className="sr-only lg:not-sr-only">Search</span>
+            <kbd className="hidden rounded border border-border px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground xl:inline-flex">
+              ⌘K / Ctrl K
+            </kbd>
           </Button>
         }
       />

@@ -2,6 +2,7 @@ import { Brand } from "@/components/layout/brand";
 import { DesktopNavigation } from "@/components/layout/desktop-navigation";
 import { MobileNavigation } from "@/components/layout/mobile-navigation";
 import { NavigationUtilities } from "@/components/layout/navigation-utilities";
+import { profile } from "@/data/profile";
 
 export function Navbar() {
   return (
@@ -10,7 +11,7 @@ export function Navbar() {
         <Brand />
         <DesktopNavigation className="md:ml-auto" />
         <div className="ml-auto flex items-center gap-2 md:ml-0 md:gap-3">
-          <NavigationUtilities />
+          <NavigationUtilities githubUrl={profile.socials.github} />
           <div className="md:hidden">
             <MobileNavigation />
           </div>

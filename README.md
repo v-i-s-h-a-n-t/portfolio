@@ -16,3 +16,9 @@ The source for Vishant Kumar's personal software engineering portfolio. The `vk.
 - **Styling and UI:** Tailwind CSS 4, shadcn/ui with Base UI and Nova, Lucide React, Motion, and `next-themes`.
 - **Content:** MDX project writeups, typed metadata, and server-side publication filtering.
 - **Tooling:** pnpm 12, ESLint 9, Prettier 3, and Node.js 24.
+
+## Architecture
+
+Routes and metadata live in `src/app`; reusable layout, section, project, and UI components live in `src/components`. Typed project MDX lives in `src/content/projects`, with publication filtering and content helpers in `src/content` and `src/lib`. Static profile, education, skills, achievements, and changelog records live in `src/data`. Approved images and the public résumé live in `public`; content tests live in `tests`.
+
+Server Components render route content by default. Client Components handle navigation, search, filtering, themes, and motion. See [the architecture guide](docs/ARCHITECTURE.md) for directory responsibilities and boundaries.

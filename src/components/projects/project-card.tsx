@@ -19,7 +19,7 @@ export function ProjectCard({
     <Card
       className={`h-full gap-0 rounded-lg border border-border py-0 shadow-sm ring-0 ${
         href
-          ? "transition-[border-color,box-shadow] duration-150 group-hover:border-primary/50 group-hover:shadow-md motion-reduce:transition-none"
+          ? "transition-[transform,border-color,box-shadow] duration-200 group-hover:-translate-y-0.5 group-hover:border-primary/50 group-hover:shadow-md group-focus-visible:-translate-y-0.5 group-focus-visible:border-primary/50 group-focus-visible:shadow-md motion-reduce:transform-none motion-reduce:transition-none"
           : ""
       }`}
     >

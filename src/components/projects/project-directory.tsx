@@ -9,6 +9,7 @@ export function ProjectDirectory({
 }: {
   projects: ProjectMetadata[];
 }) {
+  const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
   const [technology, setTechnology] = useState("");
 
@@ -27,11 +28,23 @@ export function ProjectDirectory({
     [projects],
   );
 
-  const filteredProjects = projects.filter(
-    (project) =>
+  const filteredProjects = projects.filter((project) => {
+    const searchText = [
+      project.title,
+      project.description,
+      project.category,
+      ...project.technologies,
+    ]
+      .filter(Boolean)
+      .join(" ")
+      .toLocaleLowerCase();
+
+    return (
+      (!search || searchText.includes(search.trim().toLocaleLowerCase())) &&
       (!category || project.category === category) &&
-      (!technology || project.technologies.includes(technology)),
-  );
+      (!technology || project.technologies.includes(technology))
+    );
+  });
 
   if (projects.length === 0) {
     return (
@@ -43,6 +56,18 @@ export function ProjectDirectory({
 
   return (
     <div className="space-y-6">
+      <label className="grid gap-2 text-sm font-medium">
+        Search projects
+        <input
+          autoComplete="off"
+          className="h-10 rounded-md border border-input bg-background px-3 text-base font-normal text-foreground placeholder:text-muted-foreground focus-visible:outline-2 focus-visible:outline-ring"
+          onChange={(event) => setSearch(event.target.value)}
+          placeholder="Search by name, category, or technology"
+          type="search"
+          value={search}
+        />
+      </label>
+
       <div className="flex flex-col gap-4 sm:flex-row">
         <label className="grid flex-1 gap-2 text-sm font-medium">
           Category

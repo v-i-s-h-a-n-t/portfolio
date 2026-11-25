@@ -36,3 +36,15 @@ The documented design pairs a Next.js and TypeScript frontend with a Spring Boot
 ## My contributions
 
 Public commit history records work on profile updates and subject create, read, update, and delete operations.
+
+## Technical diagram
+
+<MermaidDiagram
+  title="Documented system structure"
+  description="The Next.js frontend communicates with a Spring Boot backend. The backend uses PostgreSQL and JWT role-based authentication."
+  code={`flowchart LR
+    User[User] --> Frontend[Next.js frontend]
+    Frontend --> Backend[Spring Boot backend]
+    Backend --> Database[(PostgreSQL)]
+    Backend --> Auth[JWT role access]`}
+/>

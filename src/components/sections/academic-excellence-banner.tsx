@@ -1,10 +1,12 @@
-import { Trophy } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight, Trophy } from "lucide-react";
 
 export function AcademicExcellenceBanner() {
   return (
-    <section
-      aria-labelledby="academic-excellence-heading"
-      className="flex items-center gap-4 rounded-lg border border-border bg-card px-5 py-5 sm:gap-5 sm:px-7"
+    <Link
+      aria-label="View academic achievements"
+      className="group flex items-center gap-4 rounded-lg border border-border bg-card px-5 py-5 text-foreground no-underline transition-colors hover:border-primary/50 hover:bg-secondary/50 hover:no-underline sm:gap-5 sm:px-7"
+      href="/achievements"
     >
       <Trophy
         aria-hidden="true"
@@ -22,6 +24,10 @@ export function AcademicExcellenceBanner() {
           Most Outstanding Student — Software Engineering &amp; STEMP, 2025
         </p>
       </div>
-    </section>
+      <ArrowUpRight
+        aria-hidden="true"
+        className="ml-auto size-5 shrink-0 text-foreground transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
+      />
+    </Link>
   );
 }

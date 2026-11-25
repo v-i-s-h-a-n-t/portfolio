@@ -17,7 +17,7 @@ export function ProjectCard({
 }: ProjectCardProps) {
   const card = (
     <Card
-      className={`gap-0 rounded-lg border border-border py-0 shadow-sm ring-0 ${
+      className={`h-full gap-0 rounded-lg border border-border py-0 shadow-sm ring-0 ${
         href
           ? "transition-[border-color,box-shadow] duration-150 group-hover:border-primary/50 group-hover:shadow-md motion-reduce:transition-none"
           : ""
@@ -29,7 +29,7 @@ export function ProjectCard({
             alt={project.image.alt}
             className="object-cover"
             fill
-            sizes="(min-width: 1024px) 50vw, 100vw"
+            sizes="(min-width: 1088px) 480px, (min-width: 768px) 50vw, 100vw"
             src={project.image.src}
           />
         </div>

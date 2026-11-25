@@ -26,7 +26,7 @@ export function FeaturedProjects() {
         title="Selected Work"
         link={{ href: "/projects", label: "All projects" }}
       />
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">
+      <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2">
         {selectedProjects.map((project, index) => (
           <ProjectCard
             key={project.slug}

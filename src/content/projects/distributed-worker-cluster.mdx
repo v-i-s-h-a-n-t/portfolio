@@ -19,3 +19,9 @@ export const metadata = {
 ## Overview
 
 This Java RMI project runs jobs across registered worker nodes. Workers elect a coordinator to manage distributed job execution.
+
+## Objectives and requirements
+
+- Register worker processes with unique IDs through a bootstrap service and connect each new worker to an active peer.
+- Submit concurrent `MAX`, `PRIMECOUNT`, and `PRIMESUM` jobs from a client GUI, using manual input or CSV files.
+- Run the bootstrap service on the default RMI port, 1099, or a configured port.

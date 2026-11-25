@@ -137,13 +137,13 @@ export function CommandPalette({ index }: CommandPaletteProps) {
       />
       <Dialog.Portal>
         <Dialog.Backdrop className="fixed inset-0 z-50 bg-black/50 backdrop-blur-[2px]" />
-        <Dialog.Popup className="fixed inset-x-4 top-[8vh] z-50 mx-auto flex max-h-[84vh] max-w-5xl flex-col overflow-hidden rounded-xl border border-border bg-background p-4 shadow-xl outline-none sm:p-6">
+        <Dialog.Popup className="fixed inset-4 z-50 mx-auto flex max-h-[calc(100vh-2rem)] max-w-screen-2xl flex-col overflow-hidden rounded-2xl border border-border bg-background p-4 shadow-xl outline-none sm:inset-6 sm:max-h-[calc(100vh-3rem)] sm:p-6 lg:inset-x-8 lg:p-8">
           <Dialog.Title className="sr-only">Search the portfolio</Dialog.Title>
           <Dialog.Description className="sr-only">
             Search public pages and published projects.
           </Dialog.Description>
-          <div className="flex h-14 shrink-0 items-center gap-3 rounded-lg border border-input bg-secondary px-4 text-muted-foreground sm:h-16">
-            <Search aria-hidden="true" className="size-5 shrink-0" />
+          <div className="flex h-14 shrink-0 items-center gap-3 rounded-lg border border-input bg-secondary px-4 text-muted-foreground sm:h-16 sm:px-5 lg:h-[104px] lg:px-7">
+            <Search aria-hidden="true" className="size-5 shrink-0 lg:size-7" />
             <input
               aria-activedescendant={
                 results[activeIndex]
@@ -156,7 +156,7 @@ export function CommandPalette({ index }: CommandPaletteProps) {
               aria-label="Search projects, articles and pages"
               autoComplete="off"
               autoFocus
-              className="h-full min-w-0 flex-1 bg-transparent text-base text-foreground outline-none placeholder:text-muted-foreground sm:text-lg"
+              className="h-full min-w-0 flex-1 bg-transparent text-base text-foreground outline-none placeholder:text-muted-foreground sm:text-xl lg:text-[28px]"
               onChange={(event) => {
                 setQuery(event.target.value);
                 setActiveIndex(0);
@@ -171,7 +171,7 @@ export function CommandPalette({ index }: CommandPaletteProps) {
               render={
                 <Button
                   aria-label="Close search"
-                  className="h-8 px-2 text-muted-foreground"
+                  className="h-9 px-2 text-base text-muted-foreground sm:text-lg"
                   size="sm"
                   type="button"
                   variant="ghost"
@@ -181,7 +181,7 @@ export function CommandPalette({ index }: CommandPaletteProps) {
               }
             />
           </div>
-          <div className="min-h-24 overflow-y-auto pt-4">
+          <div className="min-h-24 overflow-y-auto pt-4 sm:pt-5">
             {hasQuery ? (
               <p
                 aria-live="polite"
@@ -202,10 +202,10 @@ export function CommandPalette({ index }: CommandPaletteProps) {
                   key={group}
                   role="group"
                 >
-                  <h2 className="mb-2 px-1 text-sm text-muted-foreground">
+                  <h2 className="mb-2 px-1 text-base text-muted-foreground sm:text-xl">
                     {group}
                   </h2>
-                  <div className="space-y-1">
+                  <div className="space-y-1.5">
                     {items.map((item) => {
                       const resultIndex = results.findIndex(
                         (result) => result.id === item.id,
@@ -216,7 +216,7 @@ export function CommandPalette({ index }: CommandPaletteProps) {
                       return (
                         <div
                           aria-selected={isActive}
-                          className="flex cursor-pointer items-start gap-3 rounded-md px-3 py-2.5 text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring aria-selected:bg-secondary"
+                          className="flex cursor-pointer items-center gap-3 rounded-md px-3 py-3 text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring aria-selected:bg-secondary sm:gap-4 sm:px-4 sm:py-5"
                           id={`command-result-${item.id}`}
                           key={item.id}
                           onClick={() => selectResult(item)}
@@ -226,15 +226,10 @@ export function CommandPalette({ index }: CommandPaletteProps) {
                         >
                           <ResultIcon
                             aria-hidden="true"
-                            className={`mt-0.5 size-5 shrink-0 ${item.group === "Projects" ? "text-primary" : "text-muted-foreground"}`}
+                            className={`size-5 shrink-0 sm:size-6 ${item.group === "Projects" ? "text-primary" : "text-muted-foreground"}`}
                           />
-                          <span className="min-w-0 space-y-0.5">
-                            <span className="block font-medium">
-                              {item.title}
-                            </span>
-                            <span className="block text-sm text-muted-foreground">
-                              {item.description}
-                            </span>
+                          <span className="min-w-0 text-base font-medium sm:text-xl lg:text-2xl">
+                            {item.title}
                           </span>
                         </div>
                       );

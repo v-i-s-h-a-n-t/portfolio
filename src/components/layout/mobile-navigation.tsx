@@ -30,8 +30,8 @@ export function MobileNavigation() {
         }
       />
       <Dialog.Portal>
-        <Dialog.Backdrop className="fixed inset-0 z-50 bg-black/30" />
-        <Dialog.Popup className="fixed inset-x-4 top-20 z-50 mx-auto max-w-sm rounded-xl border border-border bg-background p-4 shadow-lg outline-none">
+        <Dialog.Backdrop className="fixed inset-0 z-50 bg-black/30 transition-opacity duration-150 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0 motion-reduce:transition-none" />
+        <Dialog.Popup className="fixed inset-x-4 top-20 z-50 mx-auto max-w-sm rounded-xl border border-border bg-background p-4 shadow-lg transition-[opacity,transform] duration-150 outline-none data-[ending-style]:translate-y-1 data-[ending-style]:opacity-0 data-[starting-style]:translate-y-1 data-[starting-style]:opacity-0 motion-reduce:transition-none">
           <div className="mb-3 flex items-center justify-between">
             <Dialog.Title className="font-heading text-lg font-semibold">
               Navigation

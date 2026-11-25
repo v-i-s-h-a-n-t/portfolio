@@ -1,4 +1,5 @@
 import { AcademicExcellenceBanner } from "@/components/sections/academic-excellence-banner";
+import { FeaturedProjects } from "@/components/sections/featured-projects";
 import { Introduction } from "@/components/sections/introduction";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <>
       <Introduction />
       <AcademicExcellenceBanner />
+      <FeaturedProjects />
     </>
   );
 }

@@ -2,35 +2,47 @@ import { journalContentModules } from "@/content/journal";
 import { projectContentModules } from "@/content/projects";
 import type { JournalContentEntry } from "@/content/journal";
 import type { ProjectContentEntry } from "@/content/projects";
+import type {
+  PublishedJournalContentMetadata,
+  PublishedProjectContentMetadata,
+} from "@/content/types";
 
-export function getPublishedProjectContent(): ProjectContentEntry[] {
+export type PublishedProjectContentEntry = Omit<
+  ProjectContentEntry,
+  "metadata"
+> & { metadata: PublishedProjectContentMetadata };
+
+export type PublishedJournalContentEntry = Omit<
+  JournalContentEntry,
+  "metadata"
+> & { metadata: PublishedJournalContentMetadata };
+
+export function getPublishedProjectContent(): PublishedProjectContentEntry[] {
   return projectContentModules.filter(
-    (entry) => entry.metadata.publicationStatus === "published",
+    (entry): entry is PublishedProjectContentEntry =>
+      entry.metadata.publicationStatus === "published",
   );
 }
 
 export function getProjectContentBySlug(
   slug: string,
-): ProjectContentEntry | undefined {
-  return projectContentModules.find(
-    (entry) =>
-      entry.metadata.slug === slug &&
-      entry.metadata.publicationStatus === "published",
+): PublishedProjectContentEntry | undefined {
+  return getPublishedProjectContent().find(
+    (entry) => entry.metadata.slug === slug,
   );
 }
 
-export function getPublishedJournalContent(): JournalContentEntry[] {
+export function getPublishedJournalContent(): PublishedJournalContentEntry[] {
   return journalContentModules.filter(
-    (entry) => entry.metadata.publicationStatus === "published",
+    (entry): entry is PublishedJournalContentEntry =>
+      entry.metadata.publicationStatus === "published",
   );
 }
 
 export function getJournalContentBySlug(
   slug: string,
-): JournalContentEntry | undefined {
-  return journalContentModules.find(
-    (entry) =>
-      entry.metadata.slug === slug &&
-      entry.metadata.publicationStatus === "published",
+): PublishedJournalContentEntry | undefined {
+  return getPublishedJournalContent().find(
+    (entry) => entry.metadata.slug === slug,
   );
 }

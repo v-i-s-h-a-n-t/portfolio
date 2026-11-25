@@ -15,6 +15,7 @@ export function FeaturedProjects() {
         <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2">
           {featuredProjects.map((project) => (
             <ProjectCard
+              href={`/projects/${project.slug}`}
               key={project.slug}
               project={project}
               variant={project.image ? "illustrated" : "compact"}

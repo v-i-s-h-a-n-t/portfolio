@@ -138,6 +138,7 @@ export function ProjectDirectory({
         <div className="grid grid-cols-1 items-stretch gap-5 md:grid-cols-2">
           {filteredProjects.map((project) => (
             <ProjectCard
+              href={`/projects/${project.slug}`}
               key={project.slug}
               project={project}
               variant={project.image ? "illustrated" : "compact"}

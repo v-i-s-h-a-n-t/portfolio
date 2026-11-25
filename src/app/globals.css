@@ -172,6 +172,107 @@
     text-decoration-thickness: 0.12em;
   }
 
+  .mdx-content {
+    max-width: 68ch;
+    color: var(--foreground);
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .mdx-content > :first-child {
+    margin-top: 0;
+  }
+
+  .mdx-content :is(p, ul, ol, blockquote, pre, table) {
+    margin-block: 1rem;
+  }
+
+  .mdx-content :is(h1, h2, h3, h4) {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--foreground);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .mdx-content h1 {
+    font-size: 1.75rem;
+  }
+
+  .mdx-content h2 {
+    font-size: 1.4rem;
+  }
+
+  .mdx-content h3,
+  .mdx-content h4 {
+    font-size: 1.125rem;
+  }
+
+  .mdx-content ul,
+  .mdx-content ol {
+    padding-inline-start: 1.5rem;
+  }
+
+  .mdx-content ul {
+    list-style: disc;
+  }
+
+  .mdx-content ol {
+    list-style: decimal;
+  }
+
+  .mdx-content li + li {
+    margin-top: 0.4rem;
+  }
+
+  .mdx-content blockquote {
+    border-inline-start: 2px solid var(--primary);
+    padding-inline-start: 1rem;
+    color: var(--muted-foreground);
+  }
+
+  .mdx-content pre {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-secondary);
+    padding: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    line-height: 1.65;
+  }
+
+  .mdx-content :not(pre) > code {
+    border-radius: 0.25rem;
+    background: var(--muted);
+    padding: 0.15em 0.35em;
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+  }
+
+  .mdx-content hr {
+    margin-block: 2rem;
+    border-color: var(--border);
+  }
+
+  .mdx-content table {
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
+  }
+
+  .mdx-content :is(th, td) {
+    border: 1px solid var(--border);
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+  }
+
+  .mdx-content th {
+    background: var(--muted);
+    font-weight: 600;
+  }
+
   ::selection {
     color: var(--primary-foreground);
     background-color: var(--primary);

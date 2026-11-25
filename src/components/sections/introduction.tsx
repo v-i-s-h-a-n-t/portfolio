@@ -1,5 +1,6 @@
 import { MapPin } from "lucide-react";
 import { ProfilePortrait } from "@/components/shared/profile-portrait";
+import { SocialLinks } from "@/components/shared/social-links";
 import { profile } from "@/data/profile";
 
 export function Introduction() {
@@ -33,6 +34,7 @@ export function Introduction() {
             <MapPin className="size-4 shrink-0" aria-hidden="true" />
             {profile.location}
           </p>
+          <SocialLinks links={profile.socials} />
         </div>
         <ProfilePortrait />
       </div>

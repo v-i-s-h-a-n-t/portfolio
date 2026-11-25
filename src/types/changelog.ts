@@ -2,6 +2,7 @@ export type ChangelogDate = `${number}-${number}-${number}`;
 
 export type ChangelogCategory =
   | "Foundation"
+  | "Design"
   | "Portfolio"
   | "Projects"
   | "Content"

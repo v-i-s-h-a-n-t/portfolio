@@ -1,4 +1,5 @@
-import { MapPin, UserRound } from "lucide-react";
+import { MapPin } from "lucide-react";
+import { ProfilePortrait } from "@/components/shared/profile-portrait";
 import { profile } from "@/data/profile";
 
 export function Introduction() {
@@ -33,14 +34,7 @@ export function Introduction() {
             {profile.location}
           </p>
         </div>
-        <div
-          aria-label="Portrait placeholder"
-          className="mx-auto grid aspect-[3/4] w-full max-w-[180px] place-content-center gap-2 rounded-lg border border-border bg-surface-secondary text-center text-sm text-muted-foreground md:max-w-none"
-          role="img"
-        >
-          <UserRound className="mx-auto size-8" aria-hidden="true" />
-          <span>Your photo</span>
-        </div>
+        <ProfilePortrait />
       </div>
     </section>
   );
